@@ -33,6 +33,8 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { SerieCardComponent } from './components/serie-card/serie-card.component';
 import { ActorCardComponent } from './components/actor-card/actor-card.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -66,11 +68,13 @@ import { ReviewCardComponent } from './components/review-card/review-card.compon
     SerieCardComponent,
     ActorCardComponent,
     ReviewCardComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
