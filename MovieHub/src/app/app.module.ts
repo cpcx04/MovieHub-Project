@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { HorizontalImagesListComponent } from './components/horizontal-images-list/horizontal-images-list.component';
 import { HorizontMoviesListComponent } from './components/horizont-movies-list/horizont-movies-list.component';
@@ -28,6 +28,7 @@ import { SerieDetailPageComponent } from './ui/serie-detail-page/serie-detail-pa
 import { ActorDetailPageComponent } from './ui/actor-detail-page/actor-detail-page.component';
 import { CompanyDetailPageComponent } from './ui/company-detail-page/company-detail-page.component';
 import { ProfilePageComponent } from './ui/profile-page/profile-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ProfilePageComponent } from './ui/profile-page/profile-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
