@@ -29,6 +29,10 @@ import { ActorDetailPageComponent } from './ui/actor-detail-page/actor-detail-pa
 import { CompanyDetailPageComponent } from './ui/company-detail-page/company-detail-page.component';
 import { ProfilePageComponent } from './ui/profile-page/profile-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { SerieCardComponent } from './components/serie-card/serie-card.component';
+import { ActorCardComponent } from './components/actor-card/actor-card.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SerieDetailPageComponent,
     ActorDetailPageComponent,
     CompanyDetailPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    MovieCardComponent,
+    SerieCardComponent,
+    ActorCardComponent,
+    ReviewCardComponent
   ],
   imports: [
     BrowserModule,
