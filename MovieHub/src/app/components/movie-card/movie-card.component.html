@@ -1,1 +1,12 @@
-<p>movie-card works!</p>
+<div class="card" style="width: 18rem;">
+    <img [src]="getMovieImage()" class="card-img-top" alt="Not Found"/>
+    <div class="card-body">
+      <h5 class="card-title">{{film.original_title}}</h5>
+    </div>
+    <ul class="list-group list-group-light list-group-small">
+      <li class="list-group-item px-4">Release date: {{film.release_date}}</li>
+    </ul>
+    <div class="card-body">
+      <button type="button" class="btn btn-primary">Card link</button>
+    </div>
+  </div>

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PopularFilmsResponse } from '../models/moviesObject-List.interface';
+import { PopularFilmsResponse } from '../models/movieObject-list.interface';
 import { environment } from 'src/enviroments/enviroment';
+
 
 const MOVIE_BASE_URL = 'movie';
 
@@ -11,7 +12,7 @@ const MOVIE_BASE_URL = 'movie';
 })
 export class moviesObjectService {
 
-    
+
     constructor(private http: HttpClient) { }
 
     getPopularFilmsList(): Observable<PopularFilmsResponse> {
