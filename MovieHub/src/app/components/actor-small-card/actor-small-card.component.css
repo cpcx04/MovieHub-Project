@@ -1,0 +1,11 @@
+.card{
+    background-color: #0D0C0F;
+    border-color: #9CA4AB;
+}
+.cast-name{
+    color: #9CA4AB;
+    font-size: 15px;
+}
+.cast-character{
+    font-size: 22px;
+}
