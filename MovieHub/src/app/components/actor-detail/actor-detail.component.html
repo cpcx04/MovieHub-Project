@@ -1,10 +1,12 @@
 <div class="container">
     <div class="row">
-        <div class="col-5">
-            <img [src]="getPeopleImg()" class="rounded" alt="imagen de la persona">
+        <div class="col-3">
+            <img [src]="getPeopleImg()" class="rounded w-100" alt="imagen de la persona">
         </div>
-        <div class="col-7">
-
+        <div class="col-9">
+            <span class="fw-bold fs-1">{{actorToShow.name}}</span><br>
+            <span class="fs-4 fst-italic">{{actorToShow.birthday}}</span><br><br>
+            <span class="fs-5 fw-light">{{actorToShow.biography}}</span>
         </div>
     </div>
 </div>

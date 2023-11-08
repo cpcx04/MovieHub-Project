@@ -16,8 +16,6 @@ const TOKEN = 'c69873949130194e8bc389f3e0cf7420';
 })
 export class ActorService {
 
-  peopleList: Observable<PeopleDetailsResponse>[] = [];
-
   constructor(private http: HttpClient) { }
 
   getAllPeople(): Observable<PeopleListResponse> {
