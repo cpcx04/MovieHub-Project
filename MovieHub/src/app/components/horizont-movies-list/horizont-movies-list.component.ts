@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Film } from 'src/app/models/moviesObject-List.interface';
+import { moviesObjectService } from 'src/app/service/moviesObject.service';
 
 @Component({
   selector: 'app-horizont-movies-list',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./horizont-movies-list.component.css']
 })
 export class HorizontMoviesListComponent {
+
+  popularList: Film[] = [];
+
+  constructor(private filmsService: moviesObjectService){}
+
+  ngOnInit(): void {
+    this.filmsService.getPopularFilmsList().subscribe(resp => {
+      this.popularList = resp.results;
+    })  
+}
 
 }

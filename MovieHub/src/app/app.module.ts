@@ -77,8 +77,8 @@ import { VerticalSeriesVideosListComponent } from './components/vertical-series-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
