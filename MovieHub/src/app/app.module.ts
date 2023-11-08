@@ -11,7 +11,6 @@ import { HorizontalSeriesListComponent } from './components/horizontal-series-li
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HorizontalActorsListComponent } from './components/horizontal-actors-list/horizontal-actors-list.component';
 import { VerticalActorsListComponent } from './components/vertical-actors-list/vertical-actors-list.component';
-import { VerticalVideosListComponent } from './components/vertical-videos-list/vertical-videos-list.component';
 import { ProfileDetailComponent } from './components/profile-detail/profile-detail.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { ActorDetailComponent } from './components/actor-detail/actor-detail.component';
@@ -35,6 +34,8 @@ import { ActorCardComponent } from './components/actor-card/actor-card.component
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ActorSmallCardComponent } from './components/actor-small-card/actor-small-card.component';
+import { VerticalMovieVideosListComponent } from './components/vertical-movie-videos-list/vertical-movie-videos-list.component';
+import { VerticalSeriesVideosListComponent } from './components/vertical-series-videos-list/vertical-series-videos-list.component';
 
 
 @NgModule({
@@ -48,7 +49,6 @@ import { ActorSmallCardComponent } from './components/actor-small-card/actor-sma
     NavBarComponent,
     HorizontalActorsListComponent,
     VerticalActorsListComponent,
-    VerticalVideosListComponent,
     ProfileDetailComponent,
     CompanyDetailComponent,
     ActorDetailComponent,
@@ -69,7 +69,9 @@ import { ActorSmallCardComponent } from './components/actor-small-card/actor-sma
     SerieCardComponent,
     ActorCardComponent,
     ReviewCardComponent,
-    ActorSmallCardComponent
+    ActorSmallCardComponent,
+    VerticalMovieVideosListComponent,
+    VerticalSeriesVideosListComponent
   
   ],
   imports: [
