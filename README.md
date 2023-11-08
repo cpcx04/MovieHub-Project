@@ -41,3 +41,8 @@ MovieHub es una plataforma en línea que ofrece a los amantes del cine la oportu
 - Cada usuario tiene un perfil personalizado que muestra sus datos, listas de películas, calificaciones y reseñas.
 - Los usuarios pueden personalizar su perfil con una foto y una breve descripción.
 
+## Arranque de la Aplicación
+- Se deberá de clonar el repositorio
+- Se ejecutará el comando `npm i` para instalar todas las dependencias de node_modules
+- Se ejecutará el comando `ng serve -o` para que nos arranque la aplicacioón en el http://localhost:4200/
+
