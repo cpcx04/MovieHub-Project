@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Film } from 'src/app/models/moviesObject-List.interface';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,9 +7,4 @@ import { Film } from 'src/app/models/moviesObject-List.interface';
 })
 export class MovieCardComponent {
 
-  @Input() film !: Film
-
-  getMovieImage(){
-    return"https://image.tmdb.org/t/p/w500" + this.film.poster_path;
-  }
 }

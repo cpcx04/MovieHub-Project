@@ -9,14 +9,4 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
 })
 export class HorizontMoviesListComponent {
 
-  popularList: Film[] = [];
-
-  constructor(private filmsService: moviesObjectService){}
-
-  ngOnInit(): void {
-    this.filmsService.getPopularFilmsList().subscribe(resp => {
-      this.popularList = resp.results;
-    })  
-}
-
 }
