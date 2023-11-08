@@ -9,6 +9,7 @@ import { ActorService } from 'src/app/services/actor.service';
   styleUrls: ['./vertical-actors-list.component.css']
 })
 export class VerticalActorsListComponent implements OnInit{
+  
   peopleList: People[] = [];
 
   constructor(private actorService: ActorService) {}
