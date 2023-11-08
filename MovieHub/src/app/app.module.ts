@@ -34,6 +34,7 @@ import { SerieCardComponent } from './components/serie-card/serie-card.component
 import { ActorCardComponent } from './components/actor-card/actor-card.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ActorSmallCardComponent } from './components/actor-small-card/actor-small-card.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { HttpClientModule } from '@angular/common/http';
     MovieCardComponent,
     SerieCardComponent,
     ActorCardComponent,
-    ReviewCardComponent
+    ReviewCardComponent,
+    ActorSmallCardComponent
   
   ],
   imports: [

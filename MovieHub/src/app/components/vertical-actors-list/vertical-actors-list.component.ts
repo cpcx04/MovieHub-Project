@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleDetailsResponse } from 'src/app/models/people-details.interface';
-import { PeopleListResponse } from 'src/app/models/people-list.interface';
+import { People, PeopleListResponse } from 'src/app/models/people-list.interface';
 import { ActorService } from 'src/app/services/actor.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { ActorService } from 'src/app/services/actor.service';
   styleUrls: ['./vertical-actors-list.component.css']
 })
 export class VerticalActorsListComponent implements OnInit{
-  peopleList: PeopleDetailsResponse[] = [];
+  peopleList: People[] = [];
 
   constructor(private actorService: ActorService) {}
 
   ngOnInit(): void {
     this.actorService.getAllPeople().subscribe(resp => {
-      this.peopleList = resp;
+      this.peopleList = resp.results;
     })
   }
   

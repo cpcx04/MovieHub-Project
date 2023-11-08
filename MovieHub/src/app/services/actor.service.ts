@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PeopleListResponse } from '../models/people-list.interface';
 import { Observable, forkJoin } from 'rxjs';
 import { PeopleDetailsResponse } from '../models/people-details.interface';
+import { PeopleListCreditsResponse } from '../models/people-list-credits.interface';
 
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
@@ -19,30 +20,20 @@ export class ActorService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPeople(): Observable<PeopleDetailsResponse[]> {
-    let lastId = 0;
-    
-    this.http.get<PeopleDetailsResponse>(`${PEOPLE_BASE_URL}/latest?api_key=${TOKEN}`).subscribe(resp => {
-      lastId = resp.id;
-    });
-    for (let i = 0; i < lastId; i++) {
-      this.peopleList.push(this.http.get<PeopleDetailsResponse>(`${PEOPLE_BASE_URL}/${i}?api_key=${TOKEN}`))
-    }
-    //ForkJoin para esperar a que todas las solicitudes se completen antes de devolver un Observable
-    return forkJoin(this.peopleList);
+  getAllPeople(): Observable<PeopleListResponse> {
+    return this.http.get<PeopleListResponse>(`${PEOPLE_BASE_URL}/popular?api_key=${TOKEN}`)
   }
 
-  getPeopleByMovie(idMovie: number): Observable<PeopleListResponse>{
-    return this.http.get<PeopleListResponse>(`${MOVIE_BASE_URL}/credits?api_key=${TOKEN}`);
+  getPeopleByMovie(idMovie: number): Observable<PeopleListCreditsResponse>{
+    return this.http.get<PeopleListCreditsResponse>(`${MOVIE_BASE_URL}/${idMovie}/credits?api_key=${TOKEN}`);
   }
 
-  getPeopleByTVSerie(idTvSerie: number): Observable<PeopleListResponse>{
-    return this.http.get<PeopleListResponse>(`${TVSERIE_BASE_URL}/credits?api_key=${TOKEN}`);
+  getPeopleByTVSerie(idTvSerie: number): Observable<PeopleListCreditsResponse>{
+    return this.http.get<PeopleListCreditsResponse>(`${TVSERIE_BASE_URL}/${idTvSerie}/credits?api_key=${TOKEN}`);
   }
 
   getPeopleById(idPeople: number): Observable<PeopleDetailsResponse>{
     return this.http.get<PeopleDetailsResponse>(`${PEOPLE_BASE_URL}/${idPeople}?api_key=${TOKEN}`)
   }
-
 
 }
