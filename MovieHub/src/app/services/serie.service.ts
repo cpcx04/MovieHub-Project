@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { VideoListResponse } from '../models/video-list.interface';
 import { SerieListResponse } from '../models/serie-list.interface';
 import { SerieDetailResponse } from '../models/serie-details.interface';
+import { Image, ImageListResponse } from '../models/image-list.interface';
+import { SeasonDetailReponse } from '../models/season-details.interface';
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie'
@@ -35,5 +37,13 @@ export class SerieService {
 
   findById(idSerie: number): Observable<SerieDetailResponse>{
     return this.http.get<SerieDetailResponse>(`${TVSERIE_BASE_URL}/${idSerie}?api_key=${TOKEN}`)
+  }
+
+  getImagesBySerieId(idSerie: number): Observable<ImageListResponse>{
+    return this.http.get<ImageListResponse>(`${TVSERIE_BASE_URL}/${idSerie}/images?api_key=${TOKEN}`)
+  }
+
+  getSeasonBySerieId(idSerie: number, numSeason: number): Observable<SeasonDetailReponse>{
+    return this.http.get<SeasonDetailReponse>(`${TVSERIE_BASE_URL}/${idSerie}/season/${numSeason}?api_key=${TOKEN}`)
   }
 }

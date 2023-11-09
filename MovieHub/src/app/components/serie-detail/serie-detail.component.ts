@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Genre, ProductionCompany, ProductionCountry, SerieDetailResponse } from 'src/app/models/serie-details.interface';
+import { SeasonDetailReponse } from 'src/app/models/season-details.interface';
+import { Genre, ProductionCompany, ProductionCountry, Season, SerieDetailResponse } from 'src/app/models/serie-details.interface';
 import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
@@ -11,8 +12,11 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SerieDetailComponent implements OnInit{
 
   serieToShow!: SerieDetailResponse;
+  seasonNum = 1;
   currentRate = 5;
   listGenre: Genre[] = [];
+  listImgs: String[] = [];
+  seasonToShow!: SeasonDetailReponse;
   listCompany: ProductionCompany[] = [];
   imgBackground = '';
   id = 1;
@@ -30,12 +34,18 @@ export class SerieDetailComponent implements OnInit{
         this.imgBackground = `https://image.tmdb.org/t/p/original${resp.backdrop_path}`;
       }
     });
+    this.serieService.getImagesBySerieId(1396).subscribe(resp => {
+      resp.posters.forEach(img => {
+        this.listImgs.push('https://image.tmdb.org/t/p/w500' + img.file_path);
+      })
+    })
+    this.serieService.getSeasonBySerieId(1396, 1).subscribe(resp => {
+      this.seasonToShow = resp;
+    })
   }
 
   getSerieImg() {
     return `https://image.tmdb.org/t/p/w500${this.serieToShow.poster_path}`;
   }
-  ariaValueText(current: number, max: number) {
-		return `${current} out of ${max} hearts`;
-	}
+
 }
