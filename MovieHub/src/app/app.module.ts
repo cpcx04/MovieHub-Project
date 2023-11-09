@@ -37,6 +37,8 @@ import { ActorSmallCardComponent } from './components/actor-small-card/actor-sma
 import { VerticalMovieVideosListComponent } from './components/vertical-movie-videos-list/vertical-movie-videos-list.component';
 import { VerticalSeriesVideosListComponent } from './components/vertical-series-videos-list/vertical-series-videos-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HorizontalListEpisodesComponent } from './components/horizontal-list-episodes/horizontal-list-episodes.component';
+import { EpisodeCardComponent } from './components/episode-card/episode-card.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReviewCardComponent,
     ActorSmallCardComponent,
     VerticalMovieVideosListComponent,
-    VerticalSeriesVideosListComponent
+    VerticalSeriesVideosListComponent,
+    HorizontalListEpisodesComponent,
+    EpisodeCardComponent
   
   ],
   imports: [
