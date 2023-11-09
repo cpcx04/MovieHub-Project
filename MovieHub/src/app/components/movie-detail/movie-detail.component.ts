@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FilmDetailResponse } from 'src/app/models/filmDetail.interface';
+import { moviesObjectService } from 'src/app/services/moviesObject.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,4 +9,21 @@ import { Component } from '@angular/core';
 })
 export class MovieDetailComponent {
 
+  film !: FilmDetailResponse;
+  movieId=507089
+
+  getMoviePoster(){
+    return"https://image.tmdb.org/t/p/w500" + this.film.backdrop_path;
+  }
+  getMovieImage(){
+    return"https://image.tmdb.org/t/p/w500" + this.film.poster_path;
+  }
+
+
+  constructor(private filmService: moviesObjectService){}
+  ngOnInit(): void {
+    this.filmService.getFilmById(this.movieId).subscribe(resp => {
+      this.film=resp;
+    })
+  }
 }

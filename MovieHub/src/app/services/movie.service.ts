@@ -17,6 +17,5 @@ export class MovieService {
 
   getVideosByMovieId(idMovie: number) : Observable<VideoListResponse> {
     return this.http.get<VideoListResponse>(`${MOVIE_BASE_URL}/${idMovie}/videos?api_key=${TOKEN}`)
-  }
-  
+  }  
 }
