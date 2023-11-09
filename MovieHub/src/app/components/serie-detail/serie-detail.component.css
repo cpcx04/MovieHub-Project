@@ -1,0 +1,22 @@
+.container-fluid{
+    height: 650px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.info-serie, .img-serie{
+    position: relative;
+}
+.info-serie{
+    top:240px;
+}
+
+.img-serie{
+    width: 340px;
+    top: 120px;
+    left: 30px;
+}
+.btn:hover{
+    color: #00925D;
+    border-color: #00925D;
+}

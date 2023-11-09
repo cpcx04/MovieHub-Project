@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActorSmallCardComponent } from './components/actor-small-card/actor-small-card.component';
 import { VerticalMovieVideosListComponent } from './components/vertical-movie-videos-list/vertical-movie-videos-list.component';
 import { VerticalSeriesVideosListComponent } from './components/vertical-series-videos-list/vertical-series-videos-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { VerticalSeriesVideosListComponent } from './components/vertical-series-
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
