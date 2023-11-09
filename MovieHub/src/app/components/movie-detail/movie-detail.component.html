@@ -1,25 +1,51 @@
 <div class="card card-custom border-0">
     <div class="image-container">
-      <img [src]="getMoviePoster()" class="card-img-top card-image" alt="Not Found">
+            <img [src]="getMoviePoster()" class="card-img-top card-image poster" alt="Not Found">
       <div class="overlay">
         <div style="position: relative;">
-            <div class="card-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4">
-                            <img [src]="getMovieImage()" style="width: 100%;" class="rounded img-film">
-                        </div>
-                        <div class="col-7 info-film">
-                            <button type="button"  style="border-radius: 16px;" class="btn btn-outline-light mb-4 ms-2 bg-black">Film</button>
-                            <h5 class="card-title"> 
-                                <span>{{film.original_title}}</span>
-                                </h5>
-                            <button type="button" style="border-radius: 16px;" class="btn btn-outline-light m-2" *ngFor="let genre of listGenre">{{genre.name}}</button>
-                        </div>
-                    </div>
+          <div class="card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-4" style="margin-top: 60px;">
+                  <img [src]="getMovieImage()" style="width: 100%;" class="rounded img-film">
                 </div>
+                <div class="col-7 info-film" style="margin-top:220px;">
+                  <button type="button" style="border-radius: 16px;" class="btn btn-outline-light mb-4 ms-2 bg-black">Film</button>
+                    <h5><span class="fs-1 fw-bold text-white mb-4">{{film.original_title}}</span></h5>
+                  <span class="text-dark m-2 badge bg-light m-2 mb-4" *ngFor="let comp of listCompany">{{comp.name}}</span><br>
+                  <span class="fw-bold  text-white fs-1 m-2">* * * * *</span><br>
+                  <button type="button" style="border-radius: 16px;" class="btn btn-outline-light m-2" *ngFor="let genre of listGenre">{{genre.name}}</button>
+                </div>
+                <div class="col-1" style="margin-top: 250px;">
+                  <div>
+                    <button type="button" class="btn btn-outline-light m-2 bg-black">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bookmark" viewBox="0 0 16 16">
+                        <path
+                          d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                      </svg>
+                    </button><br>
+                    <button type="button" class="btn btn-outline-light m-2 bg-black">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                          d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                      </svg>
+                    </button><br>
+                    <button type="button" class="btn btn-outline-light m-2 bg-black">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-text-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                      </svg>
+                    </button><br>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { FilmDetailResponse, Genre } from 'src/app/models/filmDetail.interface';
+import { Component} from '@angular/core';
+import { FilmDetailResponse, Genre, ProductionCompany } from 'src/app/models/filmDetail.interface';
+import { SerieDetailResponse } from 'src/app/models/serie-details.interface';
 import { moviesObjectService } from 'src/app/services/moviesObject.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class MovieDetailComponent {
   film !: FilmDetailResponse;
   movieId=	575264
   listGenre: Genre[] = [];
+  listCompany: ProductionCompany[] = [];
+  serieToShow!: SerieDetailResponse;
+  
   getMoviePoster(){
     return"https://image.tmdb.org/t/p/original" + this.film.backdrop_path;
   }
@@ -19,10 +23,12 @@ export class MovieDetailComponent {
     return"https://image.tmdb.org/t/p/original" + this.film.poster_path;
   }
   constructor(private filmService: moviesObjectService){}
+
   ngOnInit(): void {
     this.filmService.getFilmById(this.movieId).subscribe(resp => {
       this.film=resp;
       this.listGenre = resp.genres;
+      this.listCompany=resp.production_companies;
     })
   }
 }
