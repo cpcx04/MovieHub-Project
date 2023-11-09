@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Serie } from 'src/app/models/serie-list.interface';
 
 @Component({
   selector: 'app-serie-card',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SerieCardComponent {
 
+  @Input() serie!: Serie;
+
+  getSerieImg() {
+    return `https://image.tmdb.org/t/p/w500${this.serie.poster_path}`;
+  }
 }

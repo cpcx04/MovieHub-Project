@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Serie } from 'src/app/models/serie-list.interface';
+import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
   selector: 'app-horizontal-series-list',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./horizontal-series-list.component.css']
 })
 export class HorizontalSeriesListComponent {
+
+  serieList: Serie[] = [];
+
+  constructor(private serieService: SerieService) { }
+  
+  ngOnInit(): void {
+    this.serieService.getPopularSeries().subscribe(resp => {
+      this.serieList = resp.results;
+    });
+  }
 
 }

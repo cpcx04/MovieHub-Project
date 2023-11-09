@@ -1,6 +1,8 @@
 .card{
     background-color: #0D0C0F;
     border-color: #9CA4AB;
+    width: 400px;
+    height: 130px;
 }
 .cast-name{
     color: #9CA4AB;
@@ -8,4 +10,7 @@
 }
 .cast-character{
     font-size: 22px;
+}
+.img-actor{
+    width: 109px;
 }
