@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FilmDetailResponse } from 'src/app/models/filmDetail.interface';
+import { FilmDetailResponse, Genre } from 'src/app/models/filmDetail.interface';
 import { moviesObjectService } from 'src/app/services/moviesObject.service';
 
 @Component({
@@ -10,20 +10,19 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
 export class MovieDetailComponent {
 
   film !: FilmDetailResponse;
-  movieId=507089
-
+  movieId=	575264
+  listGenre: Genre[] = [];
   getMoviePoster(){
-    return"https://image.tmdb.org/t/p/w500" + this.film.backdrop_path;
+    return"https://image.tmdb.org/t/p/original" + this.film.backdrop_path;
   }
   getMovieImage(){
-    return"https://image.tmdb.org/t/p/w500" + this.film.poster_path;
+    return"https://image.tmdb.org/t/p/original" + this.film.poster_path;
   }
-
-
   constructor(private filmService: moviesObjectService){}
   ngOnInit(): void {
     this.filmService.getFilmById(this.movieId).subscribe(resp => {
       this.film=resp;
+      this.listGenre = resp.genres;
     })
   }
 }
