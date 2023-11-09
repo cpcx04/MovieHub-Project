@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Cast } from 'src/app/models/people-list-credits.interface';
-import { People } from 'src/app/models/people-list.interface';
 import { ActorService } from 'src/app/services/actor.service';
-import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { SerieDetailResponse } from 'src/app/models/serie-details.interface';
 
 @Component({
