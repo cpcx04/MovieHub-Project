@@ -13,7 +13,7 @@ export interface SerieDetailResponse {
     last_episode_to_air:  TEpisodeToAir;
     name:                 string;
     next_episode_to_air:  TEpisodeToAir;
-    networks:             Network[];
+    networks:             ProductionCompany[];
     number_of_episodes:   number;
     number_of_seasons:    number;
     origin_country:       string[];
@@ -22,7 +22,7 @@ export interface SerieDetailResponse {
     overview:             string;
     popularity:           number;
     poster_path:          string;
-    production_companies: Network[];
+    production_companies: ProductionCompany[];
     production_countries: ProductionCountry[];
     seasons:              Season[];
     spoken_languages:     SpokenLanguage[];
@@ -54,7 +54,7 @@ export interface TEpisodeToAir {
     still_path:      null;
 }
 
-export interface Network {
+export interface ProductionCompany {
     id:             number;
     logo_path:      string;
     name:           string;

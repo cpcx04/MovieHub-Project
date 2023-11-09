@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Genre, SerieDetailResponse } from 'src/app/models/serie-details.interface';
+import { Genre, ProductionCompany, ProductionCountry, SerieDetailResponse } from 'src/app/models/serie-details.interface';
 import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SerieDetailComponent implements OnInit{
 
   serieToShow!: SerieDetailResponse;
+  currentRate = 5;
   listGenre: Genre[] = [];
+  listCompany: ProductionCompany[] = [];
   imgBackground = '';
   id = 1;
 
@@ -23,8 +25,9 @@ export class SerieDetailComponent implements OnInit{
     this.serieService.findById(1396).subscribe(resp => {
       this.serieToShow = resp;
       this.listGenre = resp.genres;
+      this.listCompany = resp.production_companies;
       if (resp.backdrop_path != null) {
-        this.imgBackground = `https://image.tmdb.org/t/p/w500${resp.backdrop_path}`;
+        this.imgBackground = `https://image.tmdb.org/t/p/original${resp.backdrop_path}`;
       }
     });
   }
@@ -32,4 +35,7 @@ export class SerieDetailComponent implements OnInit{
   getSerieImg() {
     return `https://image.tmdb.org/t/p/w500${this.serieToShow.poster_path}`;
   }
+  ariaValueText(current: number, max: number) {
+		return `${current} out of ${max} hearts`;
+	}
 }
