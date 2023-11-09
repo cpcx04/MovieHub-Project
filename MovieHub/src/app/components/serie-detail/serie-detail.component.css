@@ -1,0 +1,13 @@
+.container{
+    height: 650px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-serie{
+    width: 340px;
+    position: relative;
+    top: 120px;
+    left: 30px;
+}
