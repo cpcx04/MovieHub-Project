@@ -1,1 +1,4 @@
-<p>horizontal-series-list works!</p>
+<ul class="list-group list-group-horizontal position-relative overflow-auto">
+    <app-serie-card *ngFor="let serie of serieList" [serie]="serie"
+        class="rounded col-3 my-3 list-group-item m-1 border-0"></app-serie-card>
+</ul>
