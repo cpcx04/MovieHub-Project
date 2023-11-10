@@ -1,15 +1,19 @@
 <div class="card card-custom">
-    <div class="image-container">
+  <div class="image-container">
       <img [src]="getMovieImage()" class="card-img-top card-image" alt="Not Found">
       <div class="overlay">
-        <div class="card-content">
-            <h5 class="card-title">
-              <span class="fw-bold text-white">{{film.original_title}}</span>
-            </h5>
+          <div class="card-content">
+              <div class="mt-auto"> <!-- Añadido div con clase "mt-auto" para marginar hacia abajo automáticamente -->
+                  <h5 class="card-title">
+                      <span class="fw-bold text-white">{{film.original_title}}</span>
+                  </h5>
+              </div>
           </div>
       </div>
-    </div>
   </div>
+</div>
+
+
   
 
 
