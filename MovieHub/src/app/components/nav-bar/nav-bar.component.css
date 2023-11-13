@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Modak';
+    src: url('../../../assets/font/Modak-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../../../assets/font/static/Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.fuenteModak {
+    font-family: 'Modak', sans-serif;
+    color: white;
+    font-size: 40px;
+}
+
+.navbar-text {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.fuente {
+    font-family: 'Inter', sans-serif;
+}
+
+nav {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+/* Estilo para agrandar el texto al hacer hover */
+.navbar-text.font-weight-bold:hover {
+    font-size: 28px;
+}
