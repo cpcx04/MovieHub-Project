@@ -17,7 +17,11 @@
 
             <!-- Tercera sección: Imagen a la derecha -->
             <div class="d-flex align-items-center">
-                <img class="navbar-brand" src="../../../assets/img/perfil.png" style="width: 40px; height: auto;">
+                <ng-template [ngIf]="!successSession"><button type="button"
+                        class="btn btn-outline-light mb-4 ms-2 bg-black"
+                        (click)="logging()">Acceder</button></ng-template>
+                <ng-template [ngIf]="successSession"><img class="navbar-brand" [src]="getImgAvatar()"
+                        style="width: 40px; height: auto;"></ng-template>
             </div>
         </div>
     </div>
