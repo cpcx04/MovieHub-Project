@@ -6,11 +6,12 @@ import { ProfileDetailComponent } from '../components/profile-detail/profile-det
 import { SeriesPageComponent } from '../ui/series-page/series-page.component';
 import { MoviesPageComponent } from '../ui/movies-page/movies-page.component';
 import { ActorsPageComponent } from '../ui/actors-page/actors-page.component';
+import { ProfilePageComponent } from '../ui/profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'approved', component: AuthApprovedComponent },
-  { path: 'profile', component: ProfileDetailComponent },
+  { path: 'profile', component: ProfilePageComponent },
   { path: 'series', component: SeriesPageComponent },
   { path: 'movies', component: MoviesPageComponent },
   { path: 'actors', component: ActorsPageComponent },
