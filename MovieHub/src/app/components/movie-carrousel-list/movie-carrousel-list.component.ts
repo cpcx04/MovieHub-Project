@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// movie-carrousel-list.component.ts
+import { Component, OnInit } from '@angular/core';
 import { FilmDetailResponse } from 'src/app/models/filmDetail.interface';
 import { moviesObjectService } from 'src/app/services/moviesObject.service';
 
@@ -7,24 +8,25 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
   templateUrl: './movie-carrousel-list.component.html',
   styleUrls: ['./movie-carrousel-list.component.css']
 })
-export class MovieCarrouselListComponent {
-  film !: FilmDetailResponse;
-  movieId=	575264;
+export class MovieCarrouselListComponent implements OnInit {
+  films: FilmDetailResponse[] = [];
+  movieIds = [385687];
 
-  constructor(private filmService: moviesObjectService){}
-  
-  getMoviePoster(){
-    return"https://image.tmdb.org/t/p/original" + this.film.backdrop_path;
-  }
-  getMovieImage(){
-    return"https://image.tmdb.org/t/p/original" + this.film.poster_path;
-  }
-  
+  constructor(private filmService: moviesObjectService) {}
 
   ngOnInit(): void {
-    this.filmService.getFilmById(this.movieId).subscribe(resp => {
-      this.film=resp;
-      
-    })
+    this.loadMovies();
+  }
+
+  loadMovies() {
+    this.movieIds.forEach((movieId) => {
+      this.filmService.getFilmById(movieId).subscribe((resp) => {
+        this.films.push(resp);
+      });
+    });
+  }
+
+  getMoviePoster(film: FilmDetailResponse): string {
+    return "https://image.tmdb.org/t/p/original" + film.backdrop_path;
   }
 }
