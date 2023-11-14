@@ -48,16 +48,32 @@ export class AccountService {
     })
   }
 
-  getFavouritesMovies(): Observable<>{
-
+  getFavouritesMovies(): Observable<PopularFilmsResponse>{
+    return this.http.get<PopularFilmsResponse>(`${environment.apiBaseUrl}/account/:account_id/favourite/movies?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
-  getFavouritesSeries(): Observable<>{
-    
+  getFavouritesSeries(): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${environment.apiBaseUrl}/account/:account_id/favourite/tv?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
-  getWatchListMovies(): Observable<>{
-    
+  getWatchListMovies(): Observable<PopularFilmsResponse>{
+    return this.http.get<PopularFilmsResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist/movies?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
   getWatchListSeries(): Observable<SerieListResponse>{
-    
+    return this.http.get<SerieListResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist/tv?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
 }

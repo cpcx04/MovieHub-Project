@@ -24,7 +24,9 @@ export class ProfilePageComponent implements OnInit{
   }
 
   getWatchListSeries() {
-    this.accService.
+    this.accService.getWatchListSeries().subscribe(resp => {
+      this.serieList = resp.results;
+    })
   }
 
   getWatchListMovies() {
