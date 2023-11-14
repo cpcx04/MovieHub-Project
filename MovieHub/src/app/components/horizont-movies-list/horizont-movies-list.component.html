@@ -1,6 +1,6 @@
 <h1>Popular Films Right Now</h1>
-  <div style="overflow-x: auto; white-space: nowrap;" class="scroll-container">   
-    <div *ngFor="let film of popularList" class="card" style="width: 18rem; display: inline-block; margin-right: 10px;border-radius: 30px; border:none;">
+  <div class="scroll-container row"> 
+    <div *ngFor="let film of popularList"  class="col-3 rounded my-3">
       <app-movie-card [film]="film"></app-movie-card>
     </div> 
   </div>

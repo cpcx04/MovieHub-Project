@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { HorizontalImagesListComponent } from './components/horizontal-images-list/horizontal-images-list.component';
@@ -36,9 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActorSmallCardComponent } from './components/actor-small-card/actor-small-card.component';
 import { VerticalMovieVideosListComponent } from './components/vertical-movie-videos-list/vertical-movie-videos-list.component';
 import { VerticalSeriesVideosListComponent } from './components/vertical-series-videos-list/vertical-series-videos-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HorizontalListEpisodesComponent } from './components/horizontal-list-episodes/horizontal-list-episodes.component';
 import { EpisodeCardComponent } from './components/episode-card/episode-card.component';
+import { MovieCarrouselListComponent } from './components/movie-carrousel-list/movie-carrousel-list.component';
 
 
 @NgModule({
@@ -76,15 +75,14 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
     VerticalMovieVideosListComponent,
     VerticalSeriesVideosListComponent,
     HorizontalListEpisodesComponent,
-    EpisodeCardComponent
-  
+    EpisodeCardComponent,
+    MovieCarrouselListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
