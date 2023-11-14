@@ -10,32 +10,46 @@ import { AccountService } from 'src/app/services/account.service';
 export class ProfileDetailComponent implements OnInit{
   
   profile!: AccountDetailResponse;
-  profileName: string = '';
+  profileName = '';
+  avatharPath = '';
   numberOfRating = 0;
+  porcentMovieRated = 0;
+  porcentSerieRated = 0;
 
   constructor(private accountService: AccountService){}
 
   ngOnInit(): void {
     this.accountService.getAccountDetails().subscribe(resp => {
+      this.profileName = resp.username.replace('', ' ');
       this.profile = resp;
-      this.profileName = this.profile.username.replace('', ' ');
+      this.avatharPath = resp.avatar.tmdb.avatar_path;
     })
-   
+    
     this.accountService.getRatedEpisodes().subscribe(resp => {
       this.numberOfRating += resp.total_results;
     });
     this.accountService.getRatedMovies().subscribe(resp => {
       this.numberOfRating += resp.total_results;
+      let sumTotal = 0;
+      for (let i = 0; i < resp.total_results; i++) {
+        sumTotal += resp.results[i].rating;
+      }
+      this.porcentMovieRated = sumTotal / resp.total_results;
     });
     this.accountService.getRatedSeries().subscribe(resp => {
       this.numberOfRating += resp.total_results;
+      let sumTotal = 0;
+      for (let i = 0; i < resp.total_results; i++) {
+        sumTotal += resp.results[i].rating;
+      }
+      this.porcentSerieRated = sumTotal / resp.total_results;
     });
     
   }
 
   getImgAvatar() {
-    if (this.profile.avatar.tmdb.avatar_path != 'null') {
-      return `https://image.tmdb.org/t/p/w500${this.profile.avatar.tmdb.avatar_path}`;
+    if (this.avatharPath != null) {
+      return `https://image.tmdb.org/t/p/w500${this.avatharPath}`;
     }else {
       return '../../../assets/img/placeholder.jpg'
     }

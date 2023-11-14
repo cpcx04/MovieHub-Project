@@ -2,17 +2,17 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-between w-100">
             <!-- Primera sección: Imagen y MovieHub a la izquierda -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" [routerLink]="['/home']">
                 <img class="navbar-brand" src="../../../assets/img/MH_1.png" style="width: 50px; height: auto;">
                 <p class="fuenteModak m-0 ml-2" style="font-size: 18px;">MovieHub</p>
             </div>
 
             <!-- Segunda sección: Texto Home y Actors en el centro -->
             <div class="d-flex align-items-center fuente">
-                <a href="#" class="navbar-text mx-2 font-weight-bold">HOME</a>
-                <a href="#" class="navbar-text mx-2 font-weight-bold">MOVIES</a>
-                <a href="#" class="navbar-text mx-2 font-weight-bold">TV SERIES</a>
-                <a href="#" class="navbar-text mx-2 font-weight-bold">ACTORS</a>
+                <a href="#" class="navbar-text mx-2 font-weight-bold" [routerLink]="['/home']">HOME</a>
+                <a href="#" class="navbar-text mx-2 font-weight-bold" [routerLink]="['/movies']">MOVIES</a>
+                <a href="#" class="navbar-text mx-2 font-weight-bold" [routerLink]="['/series']">TV SERIES</a>
+                <a href="#" class="navbar-text mx-2 font-weight-bold" [routerLink]="['/actors']">ACTORS</a>
             </div>
 
             <!-- Tercera sección: Imagen a la derecha -->
@@ -20,7 +20,8 @@
                 <ng-template [ngIf]="!successSession"><button type="button"
                         class="btn btn-outline-light mb-4 ms-2 bg-black"
                         (click)="logging()">Acceder</button></ng-template>
-                <ng-template [ngIf]="successSession"><img class="navbar-brand" [src]="getImgAvatar()"
+                <ng-template [ngIf]="successSession"><img [routerLink]="['/profile']"
+                        class="navbar-brand rounded-circle" [src]="getImgAvatar()"
                         style="width: 40px; height: auto;"></ng-template>
             </div>
         </div>

@@ -1,44 +1,6 @@
 <app-nav-bar></app-nav-bar>
-
 <div style="background-color: black;">
-  <div class="container">
-    <app-profile-detail></app-profile-detail>
-  </div>
-  <app-movie-detail></app-movie-detail>
-  <div class="container">
-    <app-horizont-movies-list></app-horizont-movies-list>
-  </div>
-  <div class="container mt-3">
-    <app-actor-detail></app-actor-detail>
-  </div>
-  <div class="container">
-    <app-vertical-actors-list></app-vertical-actors-list>
-  </div>
-  <div class="container">
-    <app-horizontal-actors-list></app-horizontal-actors-list>
-  </div>
-  <h1>LISTA HORIZONTAL MOVIES VIDEOS</h1>
-  <div class="container">
-    <app-vertical-movie-videos-list></app-vertical-movie-videos-list>
-  </div>
-  <h1>LISTA HORIZONTAL SERIES VIDEOS</h1>
-  <div class="container">
-    <app-vertical-series-videos-list></app-vertical-series-videos-list>
-  </div>
+<div class="container" id="contenedor-router">
+    <router-outlet></router-outlet>
 </div>
-<h1>LISTA VERTICAL SERIES</h1>
-<div class="container">
-  <app-vertical-series-list></app-vertical-series-list>
-</div>
-<h1>LISTA HORIZONTAL SERIES</h1>
-<div class="container">
-  <app-horizontal-series-list></app-horizontal-series-list>
-</div>
-<h1>DETALLE SERIES</h1>
-<div>
-  <app-serie-detail></app-serie-detail>
-</div>
-<h1>DETALLE COMPANY</h1>
-<div>
-  <app-company-detail></app-company-detail>
 </div>

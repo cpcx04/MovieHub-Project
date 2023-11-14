@@ -16,18 +16,34 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   getAccountDetails(): Observable<AccountDetailResponse>{
-    return this.http.get<AccountDetailResponse>(`${environment.apiBaseUrl}/account?session_id=${localStorage.getItem('session_id')}&?api_key=${environment.apiKey}`)
+    return this.http.get<AccountDetailResponse>(`${environment.apiBaseUrl}/account?session_id=${localStorage.getItem('session_id')}`, {
+       headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
 
   getRatedMovies(): Observable<MovieListRatedResponse>{
-    return this.http.get<MovieListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/movies?session_id=${localStorage.getItem('session_id')}&?api_key=${environment.apiKey}`)
+    return this.http.get<MovieListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/movies?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
 
   getRatedSeries(): Observable<SerieListRatedResponse>{
-    return this.http.get<SerieListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/tv?session_id=${localStorage.getItem('session_id')}&?api_key=${environment.apiKey}`)
+    return this.http.get<SerieListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/tv?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
 
   getRatedEpisodes(): Observable<EpisodeListRatedResponse>{
-    return this.http.get<EpisodeListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/tv/episodes?session_id=${localStorage.getItem('session_id')}&?api_key=${environment.apiKey}`)
+    return this.http.get<EpisodeListRatedResponse>(`${environment.apiBaseUrl}/account/:account_id/rated/tv/episodes?session_id=${localStorage.getItem('session_id')}`, {
+      headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
   }
 }
