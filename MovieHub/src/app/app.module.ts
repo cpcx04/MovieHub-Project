@@ -39,6 +39,8 @@ import { VerticalSeriesVideosListComponent } from './components/vertical-series-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HorizontalListEpisodesComponent } from './components/horizontal-list-episodes/horizontal-list-episodes.component';
 import { EpisodeCardComponent } from './components/episode-card/episode-card.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { AuthApprovedComponent } from './components/auth-approved/auth-approved.component';
 
 
 @NgModule({
@@ -76,7 +78,8 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
     VerticalMovieVideosListComponent,
     VerticalSeriesVideosListComponent,
     HorizontalListEpisodesComponent,
-    EpisodeCardComponent
+    EpisodeCardComponent,
+    AuthApprovedComponent
   
   ],
   imports: [
@@ -84,7 +87,16 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+     NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

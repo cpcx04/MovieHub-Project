@@ -34,5 +34,5 @@ nav {
 
 /* Estilo para agrandar el texto al hacer hover */
 .navbar-text.font-weight-bold:hover {
-    font-size: 28px;
+    font-weight: bold;
 }

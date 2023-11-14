@@ -1,1 +1,59 @@
-<p>profile-detail works!</p>
+<div class="row">
+    <div class="col-3 text-center">
+        <img [src]="getImgAvatar()" alt="imagen perfil" class="rounded-circle border-3 border-white border">
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <span class="fw-bold nombre text-white rounded">{{profile.username}}</span>
+            </div>
+            <div class="col-6">
+                <div class=row>
+                    <div class="col-6 text-center">
+                        <span class="text-white fs-5">% Valoración MOVIES</span><br>
+                        <circle-progress class="text-white"
+                            [percent]="porcentMovieRated*10"
+                            [radius]="40"
+                            [titleColor]="'#ffffff'"
+                            [subtitleColor]="'#ffffff'"
+                            [titleFontSize]="'24'"
+                            [showUnits]="false"
+                            [showSubtitle]="false"
+                            [outerStrokeWidth]="8"
+                            [innerStrokeWidth]="4"
+                            [innerStrokeColor]="'#ffffff'"
+                            [outerStrokeColor]="'#00925D'"
+                            [animation]="true"
+                            [animationDuration]="300"></circle-progress>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span class="text-white fs-5">% Valoración TV SERIES</span><br>
+                        <circle-progress class="text-white"
+                            [percent]="porcentSerieRated*10"
+                            [radius]="40"
+                            [titleColor]="'#ffffff'"
+                            [subtitleColor]="'#ffffff'"
+                            [titleFontSize]="'24'"
+                            [showUnits]="false"
+                            [showSubtitle]="false"
+                            [outerStrokeWidth]="8"
+                            [innerStrokeWidth]="4"
+                            [innerStrokeColor]="'#ffffff'"
+                            [outerStrokeColor]="'#00925D'"
+                            [animation]="true"
+                            [animationDuration]="300"></circle-progress>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span class="text-white fs-5">Total de Valoraciones</span><br><br>
+                        <span class="fw-bold fs-1 numRating">{{numberOfRating}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
