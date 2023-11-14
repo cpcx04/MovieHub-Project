@@ -85,8 +85,7 @@ import { MovieCarrouselListComponent } from './components/movie-carrousel-list/m
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule,
-    BrowserAnimationsModule, 
+    HttpClientModule, 
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
