@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cast } from 'src/app/models/people-list-credits.interface';
 import { SeasonDetailReponse } from 'src/app/models/season-details.interface';
@@ -13,13 +13,11 @@ import { SerieService } from 'src/app/services/serie.service';
 })
 export class SerieDetailComponent implements OnInit{
 
-  serieToShow!: SerieDetailResponse;
+  @Input() serieToShow!: SerieDetailResponse;
   listCast: Cast[] = [];
   seasonNum = 1;
   currentRate = 5;
   listGenre: Genre[] = [];
-  listImgs: String[] = [];
-  seasonToShow!: SeasonDetailReponse;
   listCompany: ProductionCompany[] = [];
   imgBackground = '';
   id = 1;
@@ -29,7 +27,7 @@ export class SerieDetailComponent implements OnInit{
   ngOnInit(): void {
     //Se coloca un id de prueba para comprobar que funciona el componente
     this.route.params.subscribe(p => this.id = +p['id'])
-    this.serieService.findById(1396).subscribe(resp => {
+    this.serieService.findById(this.id).subscribe(resp => {
       this.serieToShow = resp;
       this.listGenre = resp.genres;
       this.listCompany = resp.production_companies;
@@ -37,17 +35,9 @@ export class SerieDetailComponent implements OnInit{
         this.imgBackground = `https://image.tmdb.org/t/p/original${resp.backdrop_path}`;
       }
     });
-    this.serieService.getImagesBySerieId(1396).subscribe(resp => {
-      resp.posters.forEach(img => {
-        this.listImgs.push('https://image.tmdb.org/t/p/w500' + img.file_path);
-      })
-    })
-    this.actorService.getPeopleByTVSerie(1396).subscribe(resp => {
+    this.actorService.getPeopleByTVSerie(this.id).subscribe(resp => {
       this.listCast = resp.cast;
     });
-    this.serieService.getSeasonBySerieId(1396, 1).subscribe(resp => {
-      this.seasonToShow = resp;
-    })
   }
 
   getSerieImg() {

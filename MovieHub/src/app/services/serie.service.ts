@@ -6,6 +6,7 @@ import { SerieListResponse } from '../models/serie-list.interface';
 import { SerieDetailResponse } from '../models/serie-details.interface';
 import { Image, ImageListResponse } from '../models/image-list.interface';
 import { SeasonDetailReponse } from '../models/season-details.interface';
+import { SerieListFilterGenreResponse } from '../models/serie-list-genre.interface';
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie'
@@ -46,4 +47,9 @@ export class SerieService {
   getSeasonBySerieId(idSerie: number, numSeason: number): Observable<SeasonDetailReponse>{
     return this.http.get<SeasonDetailReponse>(`${TVSERIE_BASE_URL}/${idSerie}/season/${numSeason}?api_key=${TOKEN}`)
   }
+
+  getSerieByGenreId(genreId: number): Observable<SerieListFilterGenreResponse> {
+    return this.http.get<SerieListFilterGenreResponse>(`${TVSERIE_BASE_URL}/discover/movie?api_key=${TOKEN}&with_genres=${genreId}`)
+  }
+
 }

@@ -1,3 +1,4 @@
 <div class="row">
-    <app-serie-card *ngFor="let serie of serieList" [serie]="serie" class="col-3 rounded my-3"></app-serie-card>
+    <app-serie-card *ngFor="let serie of serieList" [serie]="serie" class="col-3 rounded my-3"
+        [routerLink]="['/serieDetalle', serie.id]"></app-serie-card>
 </div>
