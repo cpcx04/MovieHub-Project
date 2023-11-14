@@ -20,16 +20,40 @@ export class ProfilePageComponent implements OnInit{
   constructor(private movieService: MovieService, private serieService: SerieService, private accService: AccountService){}
 
   ngOnInit(): void {
-    
+    this.getWatchListSeries();
   }
 
   getWatchListSeries() {
     this.accService.getWatchListSeries().subscribe(resp => {
       this.serieList = resp.results;
+      this.showMovies = false;
+    })
+  }
+
+  getFavouriteSeries() {
+    this.accService.getFavouritesSeries().subscribe(resp => {
+      this.serieList = resp.results;
+      this.showMovies = false;
+
+    })
+  }
+
+  getRatedSeries() {
+    this.accService.getRatedSeries().subscribe(resp => {
+      this.serieList = resp.results;
+      this.showMovies = false;
     })
   }
 
   getWatchListMovies() {
-    
+    this.showMovies = true;
+  }
+
+  getFavouriteMovies() {
+    this.showMovies = true;
+  }
+
+  getRatedMovies() {
+    this.showMovies = true;
   }
 }

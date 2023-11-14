@@ -7,16 +7,8 @@ import { SerieService } from 'src/app/services/serie.service';
   templateUrl: './vertical-series-list.component.html',
   styleUrls: ['./vertical-series-list.component.css']
 })
-export class VerticalSeriesListComponent implements OnInit{
+export class VerticalSeriesListComponent{
 
   @Input() serieList: Serie[] = [];
-
-  constructor(private serieService: SerieService) { }
-  
-  ngOnInit(): void {
-    this.serieService.getPopularSeries().subscribe(resp => {
-      this.serieList = resp.results;
-    });
-  }
 
 }
