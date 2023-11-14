@@ -7,6 +7,7 @@ import { PopularFilmsResponse } from '../models/movieObject-list.interface';
 import { MovieListRatedResponse } from '../models/movie-list-rated.interface';
 import { SerieListRatedResponse } from '../models/serie-list-rated.interface';
 import { EpisodeListRatedResponse } from '../models/serie-episode-list-rated.interface';
+import { SerieListResponse } from '../models/serie-list.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,18 @@ export class AccountService {
         'Authorization': `Bearer ${environment.tmdbToken}`
       }
     })
+  }
+
+  getFavouritesMovies(): Observable<>{
+
+  }
+  getFavouritesSeries(): Observable<>{
+    
+  }
+  getWatchListMovies(): Observable<>{
+    
+  }
+  getWatchListSeries(): Observable<SerieListResponse>{
+    
   }
 }

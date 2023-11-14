@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Serie } from 'src/app/models/serie-list.interface';
 import { SerieService } from 'src/app/services/serie.service';
 
@@ -9,7 +9,7 @@ import { SerieService } from 'src/app/services/serie.service';
 })
 export class VerticalSeriesListComponent implements OnInit{
 
-  serieList: Serie[] = [];
+  @Input() serieList: Serie[] = [];
 
   constructor(private serieService: SerieService) { }
   
