@@ -16,6 +16,12 @@ export class SeriesPageComponent implements OnInit{
   genreList: Genre[] = [];
   genreId = 0;
 
+  page = 1;
+  numMoviesByPage = 0;
+  totalMovies = 0;
+  totalPages = 0;
+  cantPageShow = 10;
+
   constructor(private serieService: SerieService, private genreService: GenreService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -23,19 +29,34 @@ export class SeriesPageComponent implements OnInit{
     this.genreService.getAllTvSeriesGenres().subscribe(resp => {
       this.genreList = resp.genres;
     })
+    this.serieService.getPopularSeries(this.page).subscribe(resp => {
+      this.serieList = resp.results;
+      this.totalMovies = resp.total_results;
+      this.totalPages = resp.total_pages;
+      this.numMoviesByPage = resp.results.length;
+    })
+    /*
     this.serieService.getSerieByGenreId(this.genreId).subscribe(resp => {
         for (let i = 0; i < resp.results.length; i++) {
           
         }
     })
-    /*
-    if (this.genreId != 0) {
-      this.serieService.getPopularSeries().subscribe(resp => {
-      this.serieList = resp.results;
-      })
-    } else {
-      
-    }
     */
+  }
+
+  loadPage() {
+    this.serieService.getPopularSeries(this.page).subscribe(resp => {
+      this.serieList = resp.results;
+      this.totalMovies = resp.total_results;
+      this.totalPages = resp.total_pages;
+      this.numMoviesByPage = resp.results.length;
+    })
+  }
+  searchingSerie(name: string) {
+    this.serieService.getPopularSeries(this.page).subscribe(resp => {
+      this.serieList = resp.results.filter(s => {
+        s.name.toLowerCase().includes(name.toLowerCase())
+      });
+    });
   }
 }

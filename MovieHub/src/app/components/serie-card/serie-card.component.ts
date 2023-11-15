@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Serie } from 'src/app/models/serie-list.interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { Serie } from 'src/app/models/serie-list.interface';
   templateUrl: './serie-card.component.html',
   styleUrls: ['./serie-card.component.css']
 })
-export class SerieCardComponent {
+export class SerieCardComponent{
 
   @Input() serie!: Serie;
 

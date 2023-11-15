@@ -20,16 +20,16 @@ export class SerieService {
 
   constructor(private http: HttpClient) { }
 
-  getPopularSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/popular?api_key=${TOKEN}`)
+  getPopularSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/popular?api_key=${TOKEN}&page=${page}`)
   }
 
-  getTopRatedSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/top_rated?api_key=${TOKEN}`)
+  getTopRatedSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/top_rated?api_key=${TOKEN}&page=${page}`)
   }
 
-  getLatestSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/latest?api_key=${TOKEN}`)
+  getLatestSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/latest?api_key=${TOKEN}&page=${page}`)
   }
 
   getVideosBySerieId(idSerie: number) : Observable<VideoListResponse>{

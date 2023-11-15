@@ -12,11 +12,5 @@ export class HorizontalSeriesListComponent {
   serieList: Serie[] = [];
 
   constructor(private serieService: SerieService) { }
-  
-  ngOnInit(): void {
-    this.serieService.getPopularSeries().subscribe(resp => {
-      this.serieList = resp.results;
-    });
-  }
 
 }

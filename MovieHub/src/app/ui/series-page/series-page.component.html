@@ -1,5 +1,11 @@
 <div class="container first-container">
+    <app-search-bar (nameSerie)="searchingSerie($event)"></app-search-bar>
+    <!--
     <button *ngFor="let genre of genreList" [routerLink]="['/series/genre', genre.id]" type="button"
         class="btn btn-outline-light m-2 bg-black col-1">{{genre.name}}</button>
+    -->
     <app-vertical-series-list [serieList]="serieList"></app-vertical-series-list>
+    <ngb-pagination [collectionSize]="totalMovies" [pageSize]="numMoviesByPage" [maxSize]="cantPageShow" [(page)]="page"
+        aria-label="Default pagination"
+        class="d-flex justify-content-center" (pageChange)="loadPage()"></ngb-pagination>
 </div>
