@@ -10,7 +10,7 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
 })
 export class MovieCarrouselListComponent implements OnInit {
   films: FilmDetailResponse[] = [];
-  movieIds = [575264,872585,385687];
+  movieIds = [575264,872585,951491];
   
 
   constructor(private filmService: moviesObjectService) {}

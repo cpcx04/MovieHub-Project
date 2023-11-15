@@ -17,6 +17,40 @@
         </div>
       </div>
     </div>
+    <div class="carousel-item" [class.active]="i === 1">
+      <div class="image-container">
+        <img [src]="getMoviePoster(film)" class="card-img-top card-image poster" alt="{{film.original_title}}">
+        <div class="overlay">
+          <div class="card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-7 info-film">
+                  <h5><span class="fs-1 fw-bold text-white mb-4 lato">{{film.original_title}}</span></h5>
+                  <span class="lato-regular">{{film.overview}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" [class.active]="i === 2">
+      <div class="image-container">
+        <img [src]="getMoviePoster(film)" class="card-img-top card-image poster" alt="{{film.original_title}}">
+        <div class="overlay">
+          <div class="card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-7 info-film">
+                  <h5><span class="fs-1 fw-bold text-white mb-4 lato">{{film.original_title}}</span></h5>
+                  <span class="lato-regular">{{film.overview}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-template>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -24,6 +24,12 @@ export class moviesObjectService {
       return this.http.get<PopularFilmsResponse>(`${environment.apiBaseUrl}/${MOVIE_BASE_URL}/popular?api_key=${environment.apiKey}`);
     }
 
+    getFilmPage(pag: number): Observable<PopularFilmsResponse> {
+      return this.http.get<PopularFilmsResponse>(
+        `${environment.apiBaseUrl}/${MOVIE_BASE_URL}/popular?api_key=${environment.apiKey}&page=${pag}`
+      );
+    }
+    
     getFilmById(movieId: number):Observable <FilmDetailResponse>{
       return this.http.get<FilmDetailResponse>(`${environment.apiBaseUrl}/${MOVIE_BASE_URL}/${movieId}?api_key=${environment.apiKey}`)
     }
