@@ -7,6 +7,7 @@ import { SeriesPageComponent } from '../ui/series-page/series-page.component';
 import { MoviesPageComponent } from '../ui/movies-page/movies-page.component';
 import { ActorsPageComponent } from '../ui/actors-page/actors-page.component';
 import { MovieDetailComponent } from '../components/movie-detail/movie-detail.component'; // Importa el componente MovieDetailComponent
+import { MovieDetailPageComponent } from '../ui/movie-detail-page/movie-detail-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'series', component: SeriesPageComponent },
   { path: 'movies', component: MoviesPageComponent },
   { path: 'actors', component: ActorsPageComponent },
-  { path: 'movie-details/:id', component: MovieDetailComponent }, // Ruta para MovieDetailComponent con un parámetro ':id'
+  { path: 'movie-details/:id', component: MovieDetailPageComponent },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomePageComponent }

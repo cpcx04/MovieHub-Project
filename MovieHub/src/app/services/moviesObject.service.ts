@@ -6,6 +6,7 @@ import { environment } from 'src/enviroments/enviroment';
 import { FilmDetailResponse } from '../models/filmDetail.interface';
 import { MovieListRatedResponse } from '../models/movie-list-rated.interface';
 import { UpcomingFilmResponse } from '../models/moive-list-upcoming.interface';
+import { MovieImageResponse } from '../models/movie-image.interface';
 
 
 
@@ -32,6 +33,10 @@ export class moviesObjectService {
     }
     getUpcomingFilmsList(): Observable<UpcomingFilmResponse>{
       return this.http.get<UpcomingFilmResponse>(`${environment.apiBaseUrl}/${MOVIE_BASE_URL}/upcoming?api_key=${environment.apiKey}`)
+    }
+
+    getFilmImageById(idMovie: number) : Observable<MovieImageResponse>{
+      return this.http.get<MovieImageResponse>(`${environment.apiBaseUrl}/${MOVIE_BASE_URL}/${idMovie}/images?api_key=${environment.apiKey}`)
     }
     //https://api.themoviedb.org/3/movie/507089?api_key=e3d23f2096498dbb777cd454a348e001
 }

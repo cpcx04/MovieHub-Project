@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { Video } from 'src/app/models/video-list.interface';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -12,13 +13,16 @@ export class VerticalMovieVideosListComponent implements OnInit{
   
   listVideos: Video[] = [];
   
-  constructor(private movieService: MovieService, private sanitazer: DomSanitizer){}
+  constructor(private movieService: MovieService, private sanitazer: DomSanitizer ,private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    //Uso un id de prueba
-    this.movieService.getVideosByMovieId(994).subscribe(resp => {
+   this.route.params.subscribe(params => {
+    const movieId = params['id'];
+    this.movieService.getVideosByMovieId(movieId).subscribe(resp => {
       this.listVideos = resp.results;
     })
+   })
+   
   }
 
   getURLVideo(video: Video) {

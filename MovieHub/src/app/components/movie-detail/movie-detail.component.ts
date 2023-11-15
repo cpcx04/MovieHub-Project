@@ -22,7 +22,7 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private filmService: moviesObjectService,
     private actorService: ActorService,
-    private route: ActivatedRoute // Importa ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   getMoviePoster() {
