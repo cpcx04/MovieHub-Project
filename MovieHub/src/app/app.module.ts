@@ -40,6 +40,8 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AuthApprovedComponent } from './components/auth-approved/auth-approved.component';
 import { MovieCarrouselListComponent } from './components/movie-carrousel-list/movie-carrousel-list.component';
+import { TopRatedFilmComponent } from './components/top-rated-film/top-rated-film.component';
+import { UpcomingFilmsComponent } from './components/upcoming-films/upcoming-films.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { MovieCarrouselListComponent } from './components/movie-carrousel-list/m
     HorizontalListEpisodesComponent,
     EpisodeCardComponent,
     AuthApprovedComponent,
-    MovieCarrouselListComponent
+    MovieCarrouselListComponent,
+    TopRatedFilmComponent,
+    UpcomingFilmsComponent
   ],
   imports: [
     BrowserModule,
