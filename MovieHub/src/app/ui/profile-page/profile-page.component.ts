@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Film } from 'src/app/models/movieObject-list.interface';
 import { Serie } from 'src/app/models/serie-list.interface';
 import { AccountService } from 'src/app/services/account.service';
 import { MovieService } from 'src/app/services/movie.service';
@@ -16,6 +17,7 @@ export class ProfilePageComponent implements OnInit{
 
   showMovies = true;
   serieList: Serie[] = [];
+  movieList: Film[] = [];
 
   constructor(private movieService: MovieService, private serieService: SerieService, private accService: AccountService){}
 
@@ -46,14 +48,23 @@ export class ProfilePageComponent implements OnInit{
   }
 
   getWatchListMovies() {
-    this.showMovies = true;
+    this.accService.getWatchListMovies().subscribe(resp => {
+      this.movieList = resp.results;
+      this.showMovies = true;
+    })
   }
 
   getFavouriteMovies() {
-    this.showMovies = true;
+    this.accService.getFavouritesMovies().subscribe(resp => {
+      this.movieList = resp.results;
+      this.showMovies = true;
+    })
   }
 
   getRatedMovies() {
-    this.showMovies = true;
+    this.accService.getRatedMovies().subscribe(resp => {
+      this.movieList = resp.results;
+      this.showMovies = true;
+    })
   }
 }

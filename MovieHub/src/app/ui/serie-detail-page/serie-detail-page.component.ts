@@ -31,7 +31,7 @@ export class SerieDetailPageComponent implements OnInit{
       });
       for (let i = 0; i < this.seasonNumber; i++) {
         this.serieService.getSeasonBySerieId(this.id, i).subscribe(resp => {
-          this.listSeason[i]=resp;
+          this.listSeason[i] = resp;
         });
       }
     });
