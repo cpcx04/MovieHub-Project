@@ -1,4 +1,3 @@
-<h1 class="titleList">Films</h1>
 <ngb-pagination [collectionSize]="totalPages * 20" [(page)]="page" [pageSize]="20" [maxSize]="5" [boundaryLinks]="true" (pageChange)="loadNewPage()"></ngb-pagination>
 <div class="scroll-container row"> 
   <div *ngFor="let film of popularList" class="col-3 rounded my-3">

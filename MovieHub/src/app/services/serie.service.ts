@@ -6,6 +6,8 @@ import { SerieListResponse } from '../models/serie-list.interface';
 import { SerieDetailResponse } from '../models/serie-details.interface';
 import { Image, ImageListResponse } from '../models/image-list.interface';
 import { SeasonDetailReponse } from '../models/season-details.interface';
+import { SerieListFilterGenreResponse } from '../models/serie-list-genre.interface';
+import { environment } from 'src/enviroments/enviroment';
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie'
@@ -19,16 +21,16 @@ export class SerieService {
 
   constructor(private http: HttpClient) { }
 
-  getPopularSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/popular?api_key=${TOKEN}`)
+  getPopularSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/popular?api_key=${TOKEN}&page=${page}`)
   }
 
-  getTopRatedSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/top_rated?api_key=${TOKEN}`)
+  getTopRatedSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/top_rated?api_key=${TOKEN}&page=${page}`)
   }
 
-  getLatestSeries(): Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/latest?api_key=${TOKEN}`)
+  getLatestSeries(page: number): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${TVSERIE_BASE_URL}/latest?api_key=${TOKEN}&page=${page}`)
   }
 
   getVideosBySerieId(idSerie: number) : Observable<VideoListResponse>{
@@ -46,4 +48,13 @@ export class SerieService {
   getSeasonBySerieId(idSerie: number, numSeason: number): Observable<SeasonDetailReponse>{
     return this.http.get<SeasonDetailReponse>(`${TVSERIE_BASE_URL}/${idSerie}/season/${numSeason}?api_key=${TOKEN}`)
   }
+
+  getSerieByGenreId(genreId: number): Observable<SerieListFilterGenreResponse> {
+    return this.http.get<SerieListFilterGenreResponse>(`${TVSERIE_BASE_URL}/discover/movie?api_key=${TOKEN}&with_genres=${genreId}`)
+  }
+
+  getSeriesByName(name: string): Observable<SerieListResponse>{
+    return this.http.get<SerieListResponse>(`${environment.apiBaseUrl}/search/tv?query=${name}&api_key=${TOKEN}`)
+  }
+
 }

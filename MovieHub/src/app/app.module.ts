@@ -42,6 +42,8 @@ import { AuthApprovedComponent } from './components/auth-approved/auth-approved.
 import { MovieCarrouselListComponent } from './components/movie-carrousel-list/movie-carrousel-list.component';
 import { TopRatedFilmComponent } from './components/top-rated-film/top-rated-film.component';
 import { UpcomingFilmsComponent } from './components/upcoming-films/upcoming-films.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -83,12 +85,14 @@ import { UpcomingFilmsComponent } from './components/upcoming-films/upcoming-fil
     AuthApprovedComponent,
     MovieCarrouselListComponent,
     TopRatedFilmComponent,
-    UpcomingFilmsComponent
+    UpcomingFilmsComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     HttpClientModule, 
     NgCircleProgressModule.forRoot({
       // set defaults here

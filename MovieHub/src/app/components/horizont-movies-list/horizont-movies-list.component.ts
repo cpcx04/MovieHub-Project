@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Film } from 'src/app/models/movieObject-list.interface';
 import { moviesObjectService } from 'src/app/services/moviesObject.service';
