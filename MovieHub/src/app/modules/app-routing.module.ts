@@ -6,6 +6,8 @@ import { ProfileDetailComponent } from '../components/profile-detail/profile-det
 import { SeriesPageComponent } from '../ui/series-page/series-page.component';
 import { MoviesPageComponent } from '../ui/movies-page/movies-page.component';
 import { ActorsPageComponent } from '../ui/actors-page/actors-page.component';
+import { MovieDetailComponent } from '../components/movie-detail/movie-detail.component'; // Importa el componente MovieDetailComponent
+import { MovieDetailPageComponent } from '../ui/movie-detail-page/movie-detail-page.component';
 import { ProfilePageComponent } from '../ui/profile-page/profile-page.component';
 import { SerieDetailComponent } from '../components/serie-detail/serie-detail.component';
 import { SerieDetailPageComponent } from '../ui/serie-detail-page/serie-detail-page.component';
@@ -19,9 +21,10 @@ const routes: Routes = [
   { path: 'series', component: SeriesPageComponent },
   { path: 'movies', component: MoviesPageComponent },
   { path: 'actors', component: ActorsPageComponent },
+  { path: 'movie-details/:id', component: MovieDetailPageComponent },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path:'**', component: HomePageComponent}
+  { path: '**', component: HomePageComponent }
 ];
 
 @NgModule({

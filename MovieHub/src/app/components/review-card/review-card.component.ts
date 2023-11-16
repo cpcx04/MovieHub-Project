@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Reviews } from 'src/app/models/reviews-list.interface';
 
 @Component({
   selector: 'app-review-card',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ReviewCardComponent {
 
+  @Input() comments !: Reviews
 }

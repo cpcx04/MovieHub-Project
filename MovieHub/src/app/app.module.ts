@@ -40,6 +40,8 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AuthApprovedComponent } from './components/auth-approved/auth-approved.component';
 import { MovieCarrouselListComponent } from './components/movie-carrousel-list/movie-carrousel-list.component';
+import { TopRatedFilmComponent } from './components/top-rated-film/top-rated-film.component';
+import { UpcomingFilmsComponent } from './components/upcoming-films/upcoming-films.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 
@@ -82,6 +84,8 @@ import { FormsModule } from '@angular/forms';
     EpisodeCardComponent,
     AuthApprovedComponent,
     MovieCarrouselListComponent,
+    TopRatedFilmComponent,
+    UpcomingFilmsComponent,
     SearchBarComponent
   ],
   imports: [

@@ -1,0 +1,6 @@
+<h1 class="titleList">Upcoming Films</h1>
+<div style="overflow-y: auto; white-space: nowrap;" class="scroll-container">
+    <div *ngFor="let film of upComing" class="card" style="width: calc(25% - 10px); display: inline-block; margin-right: 10px; margin-bottom: 10px; border-radius: 30px; border: none;">
+        <app-movie-card [upComing]="film"></app-movie-card>
+    </div>
+</div>

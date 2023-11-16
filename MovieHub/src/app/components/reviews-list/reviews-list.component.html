@@ -1,1 +1,5 @@
-<p>reviews-list works!</p>
+<div> 
+    <div *ngFor="let comment of reviews">
+      <app-review-card [comments]="comment"></app-review-card>
+    </div> 
+  </div>

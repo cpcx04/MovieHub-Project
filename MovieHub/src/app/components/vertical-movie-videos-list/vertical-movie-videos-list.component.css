@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Rubik-Bold';
+    src: url('../../../assets/font/static/Rubik-Bold.ttf') format('truetype');
+    font-weight:  normal;
+    font-style: normal;
+  }
+  .titleList{
+    font-family: 'Rubik-Bold';
+    color: aliceblue;
+  }
+/* Contenedor con desplazamiento horizontal */
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px; /* Espaciado inferior para compensar la altura de la scrollbar */
+}
+
+/* Estilos del scrollbar para navegadores WebKit (Chrome, Safari) */
+.scroll-container::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* Color del pulgar del scrollbar (plateado) */
+    border-radius: 6px; /* Borde redondeado del pulgar */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: transparent; /* Color de fondo del scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a0; /* Cambio de color al pasar el ratón sobre el pulgar */
+}
+
+.scroll-container::-webkit-scrollbar-corner {
+    background-color: #f8f9fa; /* Color de la esquina superior derecha */
+}
+
+/* Estilos adicionales para navegadores que no son WebKit */
+.scroll-container {
+    scrollbar-width: thin; /* Ancho del scrollbar para Firefox y navegadores que no son WebKit */
+    scrollbar-color: #c0c0c0 #f8f9fa; /* Color del pulgar y fondo del scrollbar (plateado) */
+}
+
+/* Estilos específicos para el pulgar del scrollbar en navegadores que no son WebKit */
+.scroll-container:hover {
+    scrollbar-color: #a0a0a0 #f8f9fa; /* Cambio de color al pasar el ratón sobre el scrollbar */
+}

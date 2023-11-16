@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Rubik-Bold';
+    src: url('../../../assets/font/static/Rubik-Bold.ttf') format('truetype');
+    font-weight:  normal;
+    font-style: normal;
+  }
+  .titleList{
+    font-family: 'Rubik-Bold';
+    color: aliceblue;
+  }
 /* Contenedor con desplazamiento horizontal */
 .scroll-container {
     overflow-x: auto;
@@ -36,4 +46,14 @@
 /* Estilos específicos para el pulgar del scrollbar en navegadores que no son WebKit */
 .scroll-container:hover {
     scrollbar-color: #a0a0a0 #f8f9fa; /* Cambio de color al pasar el ratón sobre el scrollbar */
+}
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  background:transparent;
+    color:red ;
+    font-weight: 700;
+    margin-left: 300px;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: rgb(248, 0, 0) !important;
 }
