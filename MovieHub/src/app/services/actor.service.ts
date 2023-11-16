@@ -5,6 +5,7 @@ import { Observable, forkJoin } from 'rxjs';
 import { PeopleDetailsResponse } from '../models/people-details.interface';
 import { PeopleListCreditsResponse } from '../models/people-list-credits.interface';
 import { environment } from 'src/enviroments/enviroment';
+import { ActorsFilmsResponse } from '../models/actor-film.interface';
 
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
@@ -42,6 +43,10 @@ export class ActorService {
 
   getPeopleById(idPeople: number): Observable<PeopleDetailsResponse>{
     return this.http.get<PeopleDetailsResponse>(`${PEOPLE_BASE_URL}/${idPeople}?api_key=${TOKEN}`)
+  }
+
+  getFilmsByActor(idPeople: number): Observable<ActorsFilmsResponse>{
+    return this.http.get<ActorsFilmsResponse>(`${PEOPLE_BASE_URL}/${idPeople}/combined_credits?api_key=${TOKEN}`)
   }
 
 }

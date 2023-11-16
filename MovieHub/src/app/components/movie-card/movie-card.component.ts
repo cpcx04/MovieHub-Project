@@ -3,6 +3,7 @@ import { TopRated } from 'src/app/models/movie-list-rated.interface';
 import { Film } from 'src/app/models/movieObject-list.interface';
 import { Upcoming } from 'src/app/models/moive-list-upcoming.interface'; // Asegúrate de importar el modelo Upcoming
 import { Router } from '@angular/router';
+import { Peliculas } from 'src/app/models/actor-film.interface';
 
 @Component({
   selector: 'app-movie-card',
@@ -13,6 +14,7 @@ export class MovieCardComponent {
   @Input() film!: Film;
   @Input() topRated!: TopRated;
   @Input() upComing!: Upcoming; 
+  @Input() actorFilms!: Peliculas;
 
   constructor(private router: Router) {} 
   
@@ -23,6 +25,8 @@ export class MovieCardComponent {
       return "https://image.tmdb.org/t/p/w500" + this.topRated.poster_path;
     } else if (this.upComing) {
       return "https://image.tmdb.org/t/p/w500" + this.upComing.poster_path;
+    }else if(this.actorFilms){
+      return "https://image.tmdb.org/t/p/w500" + this.actorFilms.poster_path;
     } else {
       return ""; 
     }
@@ -35,12 +39,14 @@ export class MovieCardComponent {
       return this.topRated.original_title;
     } else if (this.upComing) {
       return this.upComing.original_title;
+    } else if (this.actorFilms) {
+      return this.actorFilms.original_title;
     } else {
       return ""; 
     }
   }
   onCardClick() {
-    const movieId = this.film?.id || this.topRated?.id || this.upComing?.id;
+    const movieId = this.film?.id || this.topRated?.id || this.upComing?.id || this.actorFilms?.id;
     
     if (movieId) {
       console.log('Card clicked!', movieId);
