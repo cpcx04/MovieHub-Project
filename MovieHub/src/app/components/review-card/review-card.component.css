@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Rubik-Bold';
+    src: url('../../../assets/font/static/Rubik-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rubik-Italic';
+    src: url('../../../assets/font/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight:  normal;
+    font-style: normal;
+}
+.autorReview {
+    font-family: 'Rubik-Bold', sans-serif;
+    color: white;
+    margin: 0;
+    padding-left: 10px; 
+}
+.review {
+    font-family: 'Rubik-Italic', sans-serif;
+    color: white;
+}
+.container {
+    display: flex;
+    align-items: center; 
+    padding: 20px;
+}
+
+.profile {
+    flex: 0 0 100px;
+}
+
+.profile img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.details {
+    flex-grow: 1;
+    padding-left: 20px; 
+}
+
+.review {
+    font-size: 16px;
+    line-height: 1.5;
+}
