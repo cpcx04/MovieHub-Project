@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Cast } from 'src/app/models/people-list-credits.interface';
 import { SeasonDetailReponse } from 'src/app/models/season-details.interface';
 import { Genre, ProductionCompany, ProductionCountry, Season, SerieDetailResponse } from 'src/app/models/serie-details.interface';
+import { AccountService } from 'src/app/services/account.service';
 import { ActorService } from 'src/app/services/actor.service';
 import { SerieService } from 'src/app/services/serie.service';
 
@@ -21,8 +22,9 @@ export class SerieDetailComponent implements OnInit{
   listCompany: ProductionCompany[] = [];
   imgBackground = '';
   id = 1;
+  estaEnFavoritos = false;
 
-  constructor(private route: ActivatedRoute, private serieService: SerieService, private actorService: ActorService) { }
+  constructor(private route: ActivatedRoute, private serieService: SerieService, private actorService: ActorService, private accountService: AccountService) { }
   
   ngOnInit(): void {
     //Se coloca un id de prueba para comprobar que funciona el componente
@@ -42,6 +44,65 @@ export class SerieDetailComponent implements OnInit{
 
   getSerieImg() {
     return `https://image.tmdb.org/t/p/w500${this.serieToShow.poster_path}`;
+  }
+
+  addToFavorite() {
+    this.accountService.addSerieToFavourite(this.id).subscribe(resp => {
+      if (resp.status_code == 1) {
+        localStorage.setItem('serieIsFavorite', "true");
+      } else {
+        localStorage.setItem('serieIsFavorite', "false");
+      }
+      if (localStorage.getItem('serieIsFavorite') != "true") {
+        this.estaEnFavoritos = false;
+      } else {
+        this.estaEnFavoritos = true;
+      }
+    });
+  }
+  removeToFavorite() {
+    this.accountService.removeSerieToFavourite(this.id).subscribe(resp => {
+      if (resp.status_code == 1) {
+        localStorage.setItem('serieIsFavorite', "false");
+      } else {
+        localStorage.setItem('serieIsFavorite', "true");
+      }
+      if (localStorage.getItem('serieIsFavorite') != "true") {
+        this.estaEnFavoritos = false;
+      } else {
+        this.estaEnFavoritos = true;
+      }
+    });
+  }
+
+  addToWatchList() {
+    this.accountService.addSerieToWatchList(this.id).subscribe(resp => {
+      if (resp.status_code == 1) {
+        localStorage.setItem('serieIsWL', "true");
+      } else {
+        localStorage.setItem('serieIsWL', "false");
+      }
+      if (localStorage.getItem('serieIsWL') != "true") {
+        this.estaEnFavoritos = false;
+      } else {
+        this.estaEnFavoritos = true;
+      }
+    });
+  }
+
+  removeToWatchList() {
+    this.accountService.removeSerieToWatchList(this.id).subscribe(resp => {
+      if (resp.status_code == 1) {
+        localStorage.setItem('serieIsWL', "false");
+      } else {
+        localStorage.setItem('serieIsWL', "true");
+      }
+      if (localStorage.getItem('serieIsWL') != "true") {
+        this.estaEnFavoritos = false;
+      } else {
+        this.estaEnFavoritos = true;
+      }
+    });
   }
 
 }
