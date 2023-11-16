@@ -24,6 +24,14 @@ export class CompanyDetailPageComponent implements OnInit{
     this.companyService.getCompanyById(this.id).subscribe(resp => {
       this.company = resp;
     })
+    this.companyService.getMoviesByCompanyId(this.id).subscribe(resp => {
+      this.listMovies = resp.results;
+    })
+    this.companyService.getSeriesByCompanyId(this.id).subscribe(resp => {
+      console.log(resp.results);
+      
+      this.listSeries = resp.results;
+    })
   }
   
 

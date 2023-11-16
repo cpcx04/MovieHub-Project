@@ -22,6 +22,11 @@ export class CompanyDetailComponent {
   }
   
   getCompanyImg() {
-    return `https://image.tmdb.org/t/p/w500${this.companyToShow.logo_path}`;
+    if (this.companyToShow.logo_path != null) {
+      return `https://image.tmdb.org/t/p/w500${this.companyToShow.logo_path}`;
+    }else {
+      return '../../../assets/img/placeholderimg.jpg'
+    }
+    
   }
 }

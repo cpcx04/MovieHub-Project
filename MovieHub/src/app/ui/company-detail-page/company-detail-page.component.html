@@ -1,8 +1,13 @@
 
 <div class="container first-container">
-    <app-company-detail [companyToShow]="company"></app-company-detail>
-    <h1>Peliculas</h1>
-    <app-vertical-movies-list></app-vertical-movies-list>
-    <h1>Series</h1>
-    <app-vertical-series-list></app-vertical-series-list>
+    <app-company-detail [companyToShow]="company" class="mb-5"></app-company-detail>
+    <div class="my-4">
+        <h1 class="fw-bold text-white">MOVIES</h1>
+        <app-vertical-movies-list [popularList]="listMovies"></app-vertical-movies-list>
+    </div>
+    <div class="my-4">
+        <h1 class="fw-bold text-white">TV SERIES</h1>
+        <app-horizontal-series-list [serieList]="listSeries"></app-horizontal-series-list>
+    </div>
+
 </div>
