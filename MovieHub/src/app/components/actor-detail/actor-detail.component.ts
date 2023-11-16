@@ -16,7 +16,6 @@ export class ActorDetailComponent {
   constructor(private route: ActivatedRoute, private actorService: ActorService) { }
   
   ngOnInit(): void {
-    //Se coloca un id de prueba para comprobar que funciona el componente
     this.route.params.subscribe(p => this.id = +p['id'] )
     this.actorService.getPeopleById(8).subscribe(resp => {
       this.actorToShow = resp;

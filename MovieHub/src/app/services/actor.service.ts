@@ -4,6 +4,7 @@ import { PeopleListResponse } from '../models/people-list.interface';
 import { Observable, forkJoin } from 'rxjs';
 import { PeopleDetailsResponse } from '../models/people-details.interface';
 import { PeopleListCreditsResponse } from '../models/people-list-credits.interface';
+import { environment } from 'src/enviroments/enviroment';
 
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
@@ -22,6 +23,15 @@ export class ActorService {
     return this.http.get<PeopleListResponse>(`${PEOPLE_BASE_URL}/popular?api_key=${TOKEN}`)
   }
 
+  getActorByName(name: string): Observable<PeopleListResponse>{
+    return this.http.get<PeopleListResponse>(`${environment.apiBaseUrl}/search/people?query=${name}&api_key=${environment.apiKey}`)
+  }
+
+  getPeoplePage(pag: number): Observable<PeopleListResponse> {
+    return this.http.get<PeopleListResponse>(
+      `${PEOPLE_BASE_URL}/popular?api_key=${environment.apiKey}&page=${pag}`
+    );
+  }
   getPeopleByMovie(idMovie: number): Observable<PeopleListCreditsResponse>{
     return this.http.get<PeopleListCreditsResponse>(`${MOVIE_BASE_URL}/${idMovie}/credits?api_key=${TOKEN}`);
   }
