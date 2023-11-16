@@ -12,6 +12,11 @@ export class ActorSmallCardComponent {
   @Input() cast!: Cast;
 
   getPeopleImg() {
-    return `https://image.tmdb.org/t/p/w500${this.cast.profile_path}`;
+    if (this.cast.profile_path != null) {
+      return `https://image.tmdb.org/t/p/w500${this.cast.profile_path}`;
+    }else {
+      return '../../../assets/img/placeholder_w500.jpg'
+    }
+    
   }
 }

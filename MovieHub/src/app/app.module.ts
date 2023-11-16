@@ -40,6 +40,8 @@ import { EpisodeCardComponent } from './components/episode-card/episode-card.com
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AuthApprovedComponent } from './components/auth-approved/auth-approved.component';
 import { MovieCarrouselListComponent } from './components/movie-carrousel-list/movie-carrousel-list.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -79,12 +81,14 @@ import { MovieCarrouselListComponent } from './components/movie-carrousel-list/m
     HorizontalListEpisodesComponent,
     EpisodeCardComponent,
     AuthApprovedComponent,
-    MovieCarrouselListComponent
+    MovieCarrouselListComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     HttpClientModule, 
     NgCircleProgressModule.forRoot({
       // set defaults here
