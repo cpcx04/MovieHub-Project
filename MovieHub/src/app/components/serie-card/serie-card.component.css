@@ -2,3 +2,48 @@
     position: absolute;
     bottom: 0%; 
 }
+@font-face {
+    font-family: 'Lato';
+    src: url('../../../assets/font/Lato/Lato-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .card-custom {
+      border: none;
+      border-radius: 30px;
+      overflow: hidden;
+  }
+  
+  .image-container {
+      position: relative;
+  }
+  
+  .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  
+  .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.5) 90%);
+  }
+  
+  .card-content {
+      position: relative;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+  }
+  
+  .card-title {
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-size: 21.6px;
+      overflow: hidden;
+  }

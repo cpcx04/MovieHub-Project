@@ -9,6 +9,9 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
   styleUrls: ['./horizont-movies-list.component.css']
 })
 export class HorizontMoviesListComponent {
+
+  @Input() listaPopular!: Film [];
+
   popularList: Film[] = [];
   page = 1;
   totalPages = 1;

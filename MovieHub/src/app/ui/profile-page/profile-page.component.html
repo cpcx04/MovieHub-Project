@@ -19,6 +19,6 @@
 
 </div>
 <div class="container">
-    <ng-template [ngIf]="showMovies"><app-horizont-movies-list [popularList]="movieList"></app-horizont-movies-list></ng-template>
+    <ng-template [ngIf]="showMovies"><app-horizont-movies-list [listaPopular]="movieList"></app-horizont-movies-list></ng-template>
     <ng-template [ngIf]="!showMovies"><app-vertical-series-list [serieList]="serieList"></app-vertical-series-list></ng-template>
 </div>
