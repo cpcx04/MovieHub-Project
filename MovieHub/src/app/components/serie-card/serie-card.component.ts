@@ -13,4 +13,5 @@ export class SerieCardComponent{
   getSerieImg() {
     return `https://image.tmdb.org/t/p/w500${this.serie.poster_path}`;
   }
+
 }

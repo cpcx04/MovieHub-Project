@@ -53,9 +53,9 @@ export class SeriesPageComponent implements OnInit{
     })
   }
   searchingSerie(name: string) {
-    this.serieService.getPopularSeries(this.page).subscribe(resp => {
-      this.serieList = resp.results.filter(s => s.name.toLowerCase().includes(name.toLowerCase())
-      );
-    });
+    this.serieService.getSeriesByName(name).subscribe(resp => {
+      this.serieList = resp.results;
+      console.log(resp)
+    }); 
   }
 }
