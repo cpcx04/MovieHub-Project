@@ -11,6 +11,7 @@ import { MovieDetailPageComponent } from '../ui/movie-detail-page/movie-detail-p
 import { ProfilePageComponent } from '../ui/profile-page/profile-page.component';
 import { SerieDetailComponent } from '../components/serie-detail/serie-detail.component';
 import { SerieDetailPageComponent } from '../ui/serie-detail-page/serie-detail-page.component';
+import { CompanyDetailPageComponent } from '../ui/company-detail-page/company-detail-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'movies', component: MoviesPageComponent },
   { path: 'actors', component: ActorsPageComponent },
   { path: 'movie-details/:id', component: MovieDetailPageComponent },
-
+  { path: 'company-details/:id', component: CompanyDetailPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomePageComponent }
 ];

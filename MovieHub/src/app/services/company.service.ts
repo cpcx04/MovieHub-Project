@@ -4,6 +4,7 @@ import { CompanyDetailResponse } from '../models/company-detail.interface';
 import { Observable } from 'rxjs';
 import { PopularFilmsResponse } from '../models/movieObject-list.interface';
 import { SerieListResponse } from '../models/serie-list.interface';
+import { environment } from 'src/enviroments/enviroment';
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie'
@@ -21,11 +22,10 @@ export class CompanyService {
   getCompanyById(idComp: number) :Observable<CompanyDetailResponse>{
     return this.http.get<CompanyDetailResponse>(`${COMPANY_BASE_URL}/${idComp}?api_key=${TOKEN}`)
   }
-
   getMoviesByCompanyId(idComp: number) :Observable<PopularFilmsResponse>{
     return this.http.get<PopularFilmsResponse>(`${COMPANY_BASE_URL}/${idComp}/movies?api_key=${TOKEN}`)
   }
   getSeriesByCompanyId(idComp: number) :Observable<SerieListResponse>{
-    return this.http.get<SerieListResponse>(`${COMPANY_BASE_URL}/${idComp}/tv?api_key=${TOKEN}`)
+    return this.http.get<SerieListResponse>(`${environment.apiBaseUrl}/discover/tv?api_key=${TOKEN}&with_companies=${idComp}`)
   }
 }
