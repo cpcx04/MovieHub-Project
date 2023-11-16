@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Peliculas } from 'src/app/models/actor-film.interface';
+import { Series } from 'src/app/models/actor-serie.interface';
 import { PeopleDetailsResponse } from 'src/app/models/people-details.interface';
 import { ActorService } from 'src/app/services/actor.service';
 
@@ -13,6 +14,7 @@ export class ActorDetailComponent {
 
   actorToShow!: PeopleDetailsResponse;
   filmsActors !: Peliculas [];
+  seriesActor !: Series[];
   id = 1;
 
   constructor(private route: ActivatedRoute, private actorService: ActorService) { }
@@ -24,6 +26,9 @@ export class ActorDetailComponent {
     })
     this.actorService.getFilmsByActor(this.id).subscribe(resp => {
       this.filmsActors=resp.cast;
+    })
+    this.actorService.getSerieByActor(this.id).subscribe(resp =>{
+      this.seriesActor=resp.cast;
     })
   }
   

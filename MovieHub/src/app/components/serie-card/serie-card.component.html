@@ -1,13 +1,14 @@
-<div class="card" style="width: 18rem;" style="cursor: pointer;">
+<div class="card" style="width: 18rem;" (click)="onCardClick()" style="cursor: pointer;">
     <img [src]="getSerieImg()" class="card-img-top" alt="imagen de la persona">
     <div class="overlay">
-        <div class="card-content">
-            <div class="mt-auto">
-                <h5 class="card-title">
-                    <span class="card-title text-center fw-bold fs-3 text-white">{{serie.name}}</span><br>
-                    <span class="card-title text-center fw-bold fs-5 text-white">{{serie.vote_average | number: '1.0-1'}}*</span>
-                </h5>
-            </div>
+      <div class="card-content">
+        <div class="mt-auto">
+          <h5 class="card-title">
+            <span class="card-title text-center fw-bold fs-3 text-white">{{ getSerieName() }}</span><br>
+            <span class="card-title text-center fw-bold fs-5 text-white">{{ getSerieRated() }}*</span>
+          </h5>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  
