@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Genre } from 'src/app/models/serie-details.interface';
 import { Serie, SerieListResponse } from 'src/app/models/serie-list.interface';
 import { GenreService } from 'src/app/services/genre.service';
@@ -22,7 +23,10 @@ export class SeriesPageComponent implements OnInit{
   totalPages = 0;
   cantPageShow = 10;
 
-  constructor(private serieService: SerieService, private genreService: GenreService, private route: ActivatedRoute){}
+  constructor(private serieService: SerieService, private genreService: GenreService, private route: ActivatedRoute,private config: NgbPaginationConfig){
+    config.size = 'lg';
+    config.boundaryLinks = true;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(p => this.genreId = +p['id'])

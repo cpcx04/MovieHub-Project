@@ -44,5 +44,8 @@ export class moviesObjectService {
     getFilmImageById(idMovie: number) : Observable<MovieImageResponse>{
       return this.http.get<MovieImageResponse>(`${environment.apiBaseUrl}/${MOVIE_BASE_URL}/${idMovie}/images?api_key=${environment.apiKey}`)
     }
+    getFilmByName(name: string): Observable<PopularFilmsResponse>{
+      return this.http.get<PopularFilmsResponse>(`${environment.apiBaseUrl}/search/movie?query=${name}&api_key=${environment.apiKey}`)
+    }
     //https://api.themoviedb.org/3/movie/507089?api_key=e3d23f2096498dbb777cd454a348e001
 }

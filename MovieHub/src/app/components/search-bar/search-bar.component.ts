@@ -8,9 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchBarComponent {
   
   @Output() nameSerie = new EventEmitter<string>;
+  @Output() nameFilm = new EventEmitter<string>;
   textToSearch:string ='';
 
   getNameToSearch() {
     this.nameSerie.emit(this.textToSearch);
+    this.nameFilm.emit(this.textToSearch);
   }
+  
 }

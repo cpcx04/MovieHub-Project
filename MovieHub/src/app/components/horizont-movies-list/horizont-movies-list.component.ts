@@ -11,27 +11,5 @@ import { moviesObjectService } from 'src/app/services/moviesObject.service';
 export class HorizontMoviesListComponent {
 
   @Input() listaPopular!: Film [];
-
-  popularList: Film[] = [];
-  page = 1;
-  totalPages = 1;
-
-  constructor(private filmsService: moviesObjectService, private config: NgbPaginationConfig) {
-    config.size = 'lg';
-    config.boundaryLinks = true;
-  }
-
-  ngOnInit(): void {
-    this.loadNewPage();
-  }
-
-  loadNewPage() {
-    this.filmsService.getFilmPage(this.page).subscribe(resp => {
-      this.popularList = resp.results;
-    })
-    this.filmsService.getPopularFilmsList().subscribe(resp => {
-      this.totalPages = resp.total_pages;
-      this.popularList = resp.results;
-    });
-  }
+ 
 }
