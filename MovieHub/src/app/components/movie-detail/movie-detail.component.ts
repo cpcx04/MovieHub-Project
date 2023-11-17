@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { FilmDetailResponse, Genre, ProductionCompany } from 'src/app/models/filmDetail.interface';
 import { Cast } from 'src/app/models/people-list-credits.interface';
 import { SerieDetailResponse } from 'src/app/models/serie-details.interface';
@@ -21,6 +22,7 @@ export class MovieDetailComponent implements OnInit {
   listCompany: ProductionCompany[] = [];
   serieToShow!: SerieDetailResponse;
   estaEnFavoritos = false;
+  estaEnWatchList = false;
 
   constructor(
     private filmService: moviesObjectService,
@@ -40,72 +42,63 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.filmService.getFilmById(this.id).subscribe(resp => {
-        this.film = resp;
-        this.listGenre = resp.genres;
-        this.listCompany = resp.production_companies;
-      });
-      this.actorService.getPeopleByMovie(this.id).subscribe(resp => {
-        this.listCast = resp.cast;
-      });
-    });
+      const filmRequest = this.filmService.getFilmById(this.id);
+      const castRequest = this.actorService.getPeopleByMovie(this.id);
+      const favoritesRequest = this.accountService.getFavouritesMovies();
+      const watchListRequest = this.accountService.getWatchListMovies();
+      forkJoin([filmRequest, castRequest, favoritesRequest, watchListRequest]).subscribe(
+        ([filmResp, castResp, favoritesResp, watchListResp]) => {
+          this.film = filmResp;
+          this.listGenre = filmResp.genres;
+          this.listCompany = filmResp.production_companies;
+          this.listCast = castResp.cast;
+          for (let i = 0; i < favoritesResp.results.length; i++) {
+            if (favoritesResp.results[i].id == this.film.id) {
+              this.estaEnFavoritos = true;
+            }
+          }
+          for (let i = 0; i < watchListResp.results.length; i++) {
+            if (watchListResp.results[i].id == this.film.id) {
+              this.estaEnWatchList = true;
+            }
+          }
+        }
+      );
+    }); 
   }
 
   addToFavorite() {
     this.accountService.addMovieToFavorite(this.id).subscribe(resp => {
       if (resp.status_code == 1) {
-        localStorage.setItem('movieIsFavorite', "true");
-      } else {
-        localStorage.setItem('movieIsFavorite', "false");
-      }
-      if (localStorage.getItem('movieIsFavorite') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
         this.estaEnFavoritos = true;
+        console.log("añadido a fav")
+      } else {
+        this.accountService.removeMovieToFavourite(this.id).subscribe(resp => {
+          if (resp.status_code == 13) {
+            this.estaEnFavoritos = false;
+            console.log("añadido a fav"); 
+          } else {
+            this.estaEnFavoritos = true;
+          }
+        });
       }
     });
   }
 
-  removeToFavorite() {
-    this.accountService.removeMovieToFavourite(this.id).subscribe(resp => {
-      if (resp.status_code == 1) {
-        localStorage.setItem('movieIsFavorite', "false");
-      } else {
-        localStorage.setItem('movieIsFavorite', "true");
-      }
-      if (localStorage.getItem('movieIsFavorite') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
-        this.estaEnFavoritos = true;
-      }
-    });
-  }
   addToWatchList() {
     this.accountService.addMovieToWatchList(this.id).subscribe(resp => {
       if (resp.status_code == 1) {
-        localStorage.setItem('movieIsWL', "true");
+        this.estaEnWatchList = true;
+        console.log("añadido a wl"); 
       } else {
-        localStorage.setItem('movieIsWL', "false");
-      }
-      if (localStorage.getItem('movieIsWL') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
-        this.estaEnFavoritos = true;
-      }
-    });
-  }
-
-  removeToWatchList() {
-    this.accountService.removeMovieToWatchList(this.id).subscribe(resp => {
-      if (resp.status_code == 1) {
-        localStorage.setItem('movieIsWL', "false");
-      } else {
-        localStorage.setItem('movieIsWL', "true");
-      }
-      if (localStorage.getItem('movieIsWL') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
-        this.estaEnFavoritos = true;
+        this.accountService.removeMovieToWatchList(this.id).subscribe(resp => {
+          if (resp.status_code == 13) {
+            this.estaEnWatchList = false;
+            console.log("eliminado a wl"); 
+          } else {
+            this.estaEnWatchList = true;
+          }
+        });
       }
     });
   }

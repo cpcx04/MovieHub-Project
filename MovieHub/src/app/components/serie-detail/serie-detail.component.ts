@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Cast } from 'src/app/models/people-list-credits.interface';
 import { SeasonDetailReponse } from 'src/app/models/season-details.interface';
 import { Genre, ProductionCompany, ProductionCountry, Season, SerieDetailResponse } from 'src/app/models/serie-details.interface';
@@ -28,32 +29,33 @@ export class SerieDetailComponent implements OnInit{
   constructor(private route: ActivatedRoute, private serieService: SerieService, private actorService: ActorService, private accountService: AccountService) { }
   
   ngOnInit(): void {
-    //Se coloca un id de prueba para comprobar que funciona el componente
-    this.route.params.subscribe(p => this.id = +p['id'])
-    this.serieService.findById(this.id).subscribe(resp => {
-      this.serieToShow = resp;
-      this.listGenre = resp.genres;
-      this.listCompany = resp.production_companies;
-      if (resp.backdrop_path != null) {
-        this.imgBackground = `https://image.tmdb.org/t/p/original${resp.backdrop_path}`;
-      }
-    });
-    this.actorService.getPeopleByTVSerie(this.id).subscribe(resp => {
-      this.listCast = resp.cast;
-    });
-    this.accountService.getFavouritesSeries().subscribe(resp => {
-      for (let i = 0; i < resp.results.length; i++) {
-        if (resp.results[i].id == this.serieToShow.id) {
-          this.estaEnFavoritos = true;
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      const serieRequest = this.serieService.findById(this.id);
+      const castserieRequest = this.actorService.getPeopleByTVSerie(this.id);
+      const favoritesserieRequest = this.accountService.getFavouritesSeries();
+      const watchListserieRequest = this.accountService.getWatchListSeries();
+      forkJoin([serieRequest, castserieRequest, favoritesserieRequest, watchListserieRequest]).subscribe(
+        ([serieResp, castResp, favoritesResp, watchListResp]) => {
+          this.serieToShow = serieResp;
+          this.listGenre = serieResp.genres;
+          this.listCompany = serieResp.production_companies;
+          if (serieResp.backdrop_path != null) {
+            this.imgBackground = `https://image.tmdb.org/t/p/original${serieResp.backdrop_path}`;
+          }
+          this.listCast = castResp.cast;
+          for (let i = 0; i < favoritesResp.results.length; i++) {
+            if (favoritesResp.results[i].id == this.serieToShow.id) {
+              this.estaEnFavoritos = true;
+            }
+          }
+          for (let i = 0; i < watchListResp.results.length; i++) {
+            if (watchListResp.results[i].id == this.serieToShow.id) {
+              this.estaEnWatchList = true;
+            }
+          }
         }
-      }
-    });
-    this.accountService.getWatchListSeries().subscribe(resp => {
-      for (let i = 0; i < resp.results.length; i++) {
-        if (resp.results[i].id == this.serieToShow.id) {
-          this.estaEnWatchList = true;
-        }
-      }
+      );
     });
   }
 
