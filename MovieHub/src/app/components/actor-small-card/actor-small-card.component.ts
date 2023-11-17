@@ -23,11 +23,11 @@ export class ActorSmallCardComponent {
     
   }
   onCardClick() {
-    const cast = this.cast?.credit_id;
+    const movieId = this.cast?.id;
     
-    if (cast) {
-      console.log('Card clicked!', cast);
-      this.router.navigate(['/serieDetalle', cast]); 
+    if (movieId) {
+      console.log('Card clicked!', movieId);
+      this.router.navigate(['/actors-details', movieId]); 
     }
   }
 }

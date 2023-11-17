@@ -7,6 +7,7 @@ import { PeopleListCreditsResponse } from '../models/people-list-credits.interfa
 import { environment } from 'src/enviroments/enviroment';
 import { ActorsFilmsResponse } from '../models/actor-film.interface';
 import { ActorSerieResponse } from '../models/actor-serie.interface';
+import { ActorImageResponse } from '../models/people-image.interface';
 
 
 const PEOPLE_BASE_URL = 'https://api.themoviedb.org/3/person'
@@ -52,6 +53,10 @@ export class ActorService {
 
   getSerieByActor(idPeople: number): Observable<ActorSerieResponse>{
     return this.http.get<ActorSerieResponse>(`${PEOPLE_BASE_URL}/${idPeople}/tv_credits?api_key=${environment.apiKey}`)
+  }
+  
+  getActorImages(idPeople : number): Observable <ActorImageResponse>{
+    return this.http.get<ActorImageResponse>(`${PEOPLE_BASE_URL}/${idPeople}/images?api_key=${environment.apiKey}`)
   }
 
 }

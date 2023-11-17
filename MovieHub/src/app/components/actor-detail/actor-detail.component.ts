@@ -15,6 +15,7 @@ export class ActorDetailComponent {
   actorToShow!: PeopleDetailsResponse;
   filmsActors !: Peliculas [];
   seriesActor !: Series[];
+  imgList: String[] = [];
   id = 1;
 
   constructor(private route: ActivatedRoute, private actorService: ActorService) { }
@@ -29,9 +30,14 @@ export class ActorDetailComponent {
     })
     this.actorService.getSerieByActor(this.id).subscribe(resp =>{
       this.seriesActor=resp.cast;
+      this.actorService.getActorImages(this.id).subscribe(resp =>{
+        resp.profiles.forEach(img => {
+          this.imgList.push('https://image.tmdb.org/t/p/w500' + img.file_path);
+        })
+      })
     })
+    
   }
-  
   getPeopleImg() {
     return `https://image.tmdb.org/t/p/w500${this.actorToShow.profile_path}`;
   }
