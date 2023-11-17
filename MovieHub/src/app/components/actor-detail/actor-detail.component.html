@@ -9,4 +9,20 @@
             <span class="fs-5 fw-light text-white">{{actorToShow.biography}}</span>
         </div>
     </div>
+    <h1 class="titleList" style="margin-top: 20px;">Films</h1>
+    <div style="overflow-y: auto; white-space: nowrap;" class="scroll-container">
+        <div *ngFor="let film of filmsActors" class="card" style="width: calc(25% - 10px); display: inline-block; margin-right: 10px; margin-bottom: 10px; border-radius: 30px; border: none;">
+            <app-movie-card [actorFilms]="film"></app-movie-card>
+        </div>
+    </div>
+    <h1 class="titleList" style="margin-top: 20px;">Tv Series</h1>
+    <div style="overflow-y: auto; white-space: nowrap;" class="scroll-container">
+        <div *ngFor="let serie of seriesActor" class="card" style="width: calc(25% - 10px); display: inline-block; margin-right: 10px; margin-bottom: 10px; border-radius: 30px; border: none;">
+            <app-serie-card [seriesActor]="serie"></app-serie-card>
+        </div>
+    </div>
+    <h1 class="titleList" style="margin-top: 20px;">Images</h1>
+    <div style="overflow-y: auto; white-space: nowrap;" class="scroll-container">
+            <app-horizontal-images-list [imgList]="imgList"></app-horizontal-images-list>
+    </div>
 </div>
