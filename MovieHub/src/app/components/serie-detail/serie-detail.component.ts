@@ -47,7 +47,14 @@ export class SerieDetailComponent implements OnInit{
           this.estaEnFavoritos = true;
         }
       }
-    })
+    });
+    this.accountService.getWatchListSeries().subscribe(resp => {
+      for (let i = 0; i < resp.results.length; i++) {
+        if (resp.results[i].id == this.serieToShow.id) {
+          this.estaEnWatchList = true;
+        }
+      }
+    });
   }
 
   getSerieImg() {
@@ -73,13 +80,13 @@ export class SerieDetailComponent implements OnInit{
   addToWatchList() {
     this.accountService.addSerieToWatchList(this.id).subscribe(resp => {
       if (resp.status_code == 1) {
-        this.estaEnFavoritos = true;
+        this.estaEnWatchList = true;
       } else {
         this.accountService.removeSerieToWatchList(this.id).subscribe(resp => {
           if (resp.status_code == 13) {
-            this.estaEnFavoritos = false;
+            this.estaEnWatchList = false;
           } else {
-            this.estaEnFavoritos = true;
+            this.estaEnWatchList = true;
           }
         });
       }
