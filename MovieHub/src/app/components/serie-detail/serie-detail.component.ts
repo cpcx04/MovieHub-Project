@@ -23,6 +23,7 @@ export class SerieDetailComponent implements OnInit{
   imgBackground = '';
   id = 1;
   estaEnFavoritos = false;
+  estaEnWatchList = false;
 
   constructor(private route: ActivatedRoute, private serieService: SerieService, private actorService: ActorService, private accountService: AccountService) { }
   
@@ -40,6 +41,13 @@ export class SerieDetailComponent implements OnInit{
     this.actorService.getPeopleByTVSerie(this.id).subscribe(resp => {
       this.listCast = resp.cast;
     });
+    this.accountService.getFavouritesSeries().subscribe(resp => {
+      for (let i = 0; i < resp.results.length; i++) {
+        if (resp.results[i].id == this.serieToShow.id) {
+          this.estaEnFavoritos = true;
+        }
+      }
+    })
   }
 
   getSerieImg() {
@@ -49,28 +57,15 @@ export class SerieDetailComponent implements OnInit{
   addToFavorite() {
     this.accountService.addSerieToFavourite(this.id).subscribe(resp => {
       if (resp.status_code == 1) {
-        localStorage.setItem('serieIsFavorite', "true");
-      } else {
-        localStorage.setItem('serieIsFavorite', "false");
-      }
-      if (localStorage.getItem('serieIsFavorite') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
         this.estaEnFavoritos = true;
-      }
-    });
-  }
-  removeToFavorite() {
-    this.accountService.removeSerieToFavourite(this.id).subscribe(resp => {
-      if (resp.status_code == 1) {
-        localStorage.setItem('serieIsFavorite', "false");
       } else {
-        localStorage.setItem('serieIsFavorite', "true");
-      }
-      if (localStorage.getItem('serieIsFavorite') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
-        this.estaEnFavoritos = true;
+        this.accountService.removeSerieToFavourite(this.id).subscribe(resp => {
+          if (resp.status_code == 13) {
+            this.estaEnFavoritos = false;
+          } else {
+            this.estaEnFavoritos = true;
+          }
+        });
       }
     });
   }
@@ -78,29 +73,15 @@ export class SerieDetailComponent implements OnInit{
   addToWatchList() {
     this.accountService.addSerieToWatchList(this.id).subscribe(resp => {
       if (resp.status_code == 1) {
-        localStorage.setItem('serieIsWL', "true");
-      } else {
-        localStorage.setItem('serieIsWL', "false");
-      }
-      if (localStorage.getItem('serieIsWL') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
         this.estaEnFavoritos = true;
-      }
-    });
-  }
-
-  removeToWatchList() {
-    this.accountService.removeSerieToWatchList(this.id).subscribe(resp => {
-      if (resp.status_code == 1) {
-        localStorage.setItem('serieIsWL', "false");
       } else {
-        localStorage.setItem('serieIsWL', "true");
-      }
-      if (localStorage.getItem('serieIsWL') != "true") {
-        this.estaEnFavoritos = false;
-      } else {
-        this.estaEnFavoritos = true;
+        this.accountService.removeSerieToWatchList(this.id).subscribe(resp => {
+          if (resp.status_code == 13) {
+            this.estaEnFavoritos = false;
+          } else {
+            this.estaEnFavoritos = true;
+          }
+        });
       }
     });
   }

@@ -9,7 +9,7 @@ import { SerieListRatedResponse } from '../models/serie-list-rated.interface';
 import { EpisodeListRatedResponse } from '../models/serie-episode-list-rated.interface';
 import { SerieListResponse } from '../models/serie-list.interface';
 import { SessionResponse } from '../models/session.interface';
-import { FavouriteOKResponse } from '../models/favourite-ok.interface';
+import { FavoriteOKResponse } from '../models/favourite-ok.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -78,8 +78,8 @@ export class AccountService {
       }
     })
   }
-  addMovieToFavorite(idMovie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+  addMovieToFavorite(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "movie",
       media_id: idMovie,
       favorite: true
@@ -90,8 +90,8 @@ export class AccountService {
       }
     })
   }
-  removeMovieToFavourite(idMovie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+  removeMovieToFavourite(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "movie",
       media_id: idMovie,
       favorite: false
@@ -102,8 +102,8 @@ export class AccountService {
       }
     })
   }
-  removeSerieToFavourite(idSerie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+  removeSerieToFavourite(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "tv",
       media_id: idSerie,
       favorite: false
@@ -114,8 +114,8 @@ export class AccountService {
       }
     })
   }
-  addSerieToFavourite(idSerie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+  addSerieToFavourite(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "tv",
       media_id: idSerie,
       favorite: true
@@ -127,8 +127,8 @@ export class AccountService {
     })
   }
 
-  addSerieToWatchList(idSerie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+  addSerieToWatchList(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "tv",
       media_id: idSerie,
       watchlist: true
@@ -139,8 +139,8 @@ export class AccountService {
       }
     })
   }
-  removeSerieToWatchList(idSerie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+  removeSerieToWatchList(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "tv",
       media_id: idSerie,
       watchlist: false
@@ -151,8 +151,8 @@ export class AccountService {
       }
     })
   }
-  addMovieToWatchList(idMovie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+  addMovieToWatchList(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "movie",
       media_id: idMovie,
       watchlist: true
@@ -163,8 +163,8 @@ export class AccountService {
       }
     })
   }
-  removeMovieToWatchList(idMovie: number): Observable<FavouriteOKResponse>{
-    return this.http.post<FavouriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+  removeMovieToWatchList(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
       media_type: "movie",
       media_id: idMovie,
       watchlist: false
