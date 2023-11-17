@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PeopleDetailsResponse } from 'src/app/models/people-details.interface';
+import { Component, Input, OnInit } from '@angular/core';
 import { People, PeopleListResponse } from 'src/app/models/people-list.interface';
 import { ActorService } from 'src/app/services/actor.service';
 
@@ -10,7 +9,7 @@ import { ActorService } from 'src/app/services/actor.service';
 })
 export class VerticalActorsListComponent implements OnInit{
   
-  peopleList: People[] = [];
+  @Input() peopleList: People[] = [];
 
   constructor(private actorService: ActorService) {}
 
