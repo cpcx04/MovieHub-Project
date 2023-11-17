@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Serie } from 'src/app/models/serie-list.interface';
 import { SerieService } from 'src/app/services/serie.service';
 
@@ -9,8 +9,5 @@ import { SerieService } from 'src/app/services/serie.service';
 })
 export class HorizontalSeriesListComponent {
 
-  serieList: Serie[] = [];
-
-  constructor(private serieService: SerieService) { }
-
+  @Input() serieList: Serie[] = [];
 }

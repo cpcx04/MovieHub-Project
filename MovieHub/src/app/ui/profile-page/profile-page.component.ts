@@ -22,7 +22,7 @@ export class ProfilePageComponent implements OnInit{
   constructor(private movieService: MovieService, private serieService: SerieService, private accService: AccountService){}
 
   ngOnInit(): void {
-    this.getWatchListSeries();
+    this.getFavouriteMovies();
   }
 
   getWatchListSeries() {

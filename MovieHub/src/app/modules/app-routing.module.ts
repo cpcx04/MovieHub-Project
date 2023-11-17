@@ -13,6 +13,7 @@ import { SerieDetailComponent } from '../components/serie-detail/serie-detail.co
 import { SerieDetailPageComponent } from '../ui/serie-detail-page/serie-detail-page.component';
 import { ActorDetailComponent } from '../components/actor-detail/actor-detail.component';
 import { ActorDetailPageComponent } from '../ui/actor-detail-page/actor-detail-page.component';
+import { CompanyDetailPageComponent } from '../ui/company-detail-page/company-detail-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'actors', component: ActorsPageComponent },
   { path: 'movie-details/:id', component: MovieDetailPageComponent },
   { path: 'actors-details/:id', component: ActorDetailPageComponent },
-
+  { path: 'company-details/:id', component: CompanyDetailPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomePageComponent }
 ];
