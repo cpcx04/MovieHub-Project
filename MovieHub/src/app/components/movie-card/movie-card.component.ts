@@ -45,6 +45,17 @@ export class MovieCardComponent {
       return ""; 
     }
   }
+  getMovieRated() {
+    if (this.film) {
+      return parseFloat(this.film.vote_average.toFixed(1));
+    } else if (this.upComing) {
+      return parseFloat(this.upComing.vote_average.toFixed(1));
+    } else if (this.topRated) {
+      return parseFloat(this.topRated.vote_average.toFixed(1));
+    } else {
+      return 0; // O cualquier otro valor por defecto que desees
+    }
+  }
   onCardClick() {
     const movieId = this.film?.id || this.topRated?.id || this.upComing?.id || this.actorFilms?.id;
     

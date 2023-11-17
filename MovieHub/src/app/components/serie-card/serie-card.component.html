@@ -5,7 +5,12 @@
         <div class="mt-auto">
           <h5 class="card-title">
             <span class="card-title text-center fw-bold fs-3 text-white">{{ getSerieName() }}</span><br>
-            <span class="card-title text-center fw-bold fs-5 text-white">{{ getSerieRated() }}*</span>
+            <ngb-rating
+            class="rating d-flex card-title text-center"
+            [rate]="getSerieRated()"
+            [max]="5"
+            [readonly]="true"
+        ></ngb-rating>    
           </h5>
         </div>
       </div>

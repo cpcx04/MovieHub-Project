@@ -7,6 +7,12 @@
                     <h5 class="card-title">
                         <span class="fw-bold text-white">{{ getTitle() }}</span>
                     </h5>
+                    <ngb-rating
+                    class="rating d-flex card-title text-center"
+                    [rate]="getMovieRated()"
+                    [max]="5"
+                    [readonly]="true"
+                ></ngb-rating> 
                 </div>
             </div>
         </div>
