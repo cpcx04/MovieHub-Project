@@ -19,7 +19,7 @@ export class ProfilePageComponent implements OnInit{
   serieList: Serie[] = [];
   movieList: Film[] = [];
 
-  constructor(private movieService: MovieService, private serieService: SerieService, private accService: AccountService){}
+  constructor(private accService: AccountService){}
 
   ngOnInit(): void {
     this.getFavouriteMovies();

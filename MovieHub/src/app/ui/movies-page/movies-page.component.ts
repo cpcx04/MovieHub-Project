@@ -34,8 +34,11 @@ export class MoviesPageComponent {
   }
   searchingFilm(name: string) {
     this.filmsService.getFilmByName(name).subscribe(resp => {
-      this.listaPopular = resp.results;
-      console.log(resp)
+      if (name != '') {
+        this.listaPopular = resp.results;
+      } else {
+        this.filmsService.getPopularFilmsList().subscribe(resp => this.listaPopular = resp.results);
+      }
     }); 
   }
 }
