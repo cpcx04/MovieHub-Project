@@ -8,6 +8,8 @@ import { MovieListRatedResponse } from '../models/movie-list-rated.interface';
 import { SerieListRatedResponse } from '../models/serie-list-rated.interface';
 import { EpisodeListRatedResponse } from '../models/serie-episode-list-rated.interface';
 import { SerieListResponse } from '../models/serie-list.interface';
+import { SessionResponse } from '../models/session.interface';
+import { FavoriteOKResponse } from '../models/favourite-ok.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +74,103 @@ export class AccountService {
   getWatchListSeries(): Observable<SerieListResponse>{
     return this.http.get<SerieListResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist/tv?session_id=${localStorage.getItem('session_id')}`, {
       headers: {
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  addMovieToFavorite(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "movie",
+      media_id: idMovie,
+      favorite: true
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  removeMovieToFavourite(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "movie",
+      media_id: idMovie,
+      favorite: false
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  removeSerieToFavourite(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "tv",
+      media_id: idSerie,
+      favorite: false
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  addSerieToFavourite(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/favorite?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "tv",
+      media_id: idSerie,
+      favorite: true
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+
+  addSerieToWatchList(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "tv",
+      media_id: idSerie,
+      watchlist: true
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  removeSerieToWatchList(idSerie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "tv",
+      media_id: idSerie,
+      watchlist: false
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  addMovieToWatchList(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "movie",
+      media_id: idMovie,
+      watchlist: true
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.tmdbToken}`
+      }
+    })
+  }
+  removeMovieToWatchList(idMovie: number): Observable<FavoriteOKResponse>{
+    return this.http.post<FavoriteOKResponse>(`${environment.apiBaseUrl}/account/:account_id/watchlist?session_id=${localStorage.getItem('session_id')}`, {
+      media_type: "movie",
+      media_id: idMovie,
+      watchlist: false
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${environment.tmdbToken}`
       }
     })

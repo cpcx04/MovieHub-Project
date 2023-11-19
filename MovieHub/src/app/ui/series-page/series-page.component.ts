@@ -33,7 +33,7 @@ export class SeriesPageComponent implements OnInit{
     this.genreService.getAllTvSeriesGenres().subscribe(resp => {
       this.genreList = resp.genres;
     })
-    this.serieService.getPopularSeries(this.page).subscribe(resp => {
+    this.serieService.getTopRatedSeries(this.page).subscribe(resp => {
       this.serieList = resp.results;
       this.totalMovies = resp.total_results;
       this.totalPages = resp.total_pages;
@@ -49,7 +49,7 @@ export class SeriesPageComponent implements OnInit{
   }
 
   loadPage() {
-    this.serieService.getPopularSeries(this.page).subscribe(resp => {
+    this.serieService.getTopRatedSeries(this.page).subscribe(resp => {
       this.serieList = resp.results;
       this.totalMovies = resp.total_results;
       this.totalPages = resp.total_pages;
@@ -58,8 +58,12 @@ export class SeriesPageComponent implements OnInit{
   }
   searchingSerie(name: string) {
     this.serieService.getSeriesByName(name).subscribe(resp => {
-      this.serieList = resp.results;
+      if (name != '') {
+        this.serieList = resp.results;
       console.log(resp)
+      } else {
+        this.serieService.getTopRatedSeries(this.page).subscribe(resp => this.serieList = resp.results)
+      }
     }); 
   }
 }

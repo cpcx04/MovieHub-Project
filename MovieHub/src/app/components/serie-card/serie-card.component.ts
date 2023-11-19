@@ -28,7 +28,7 @@ export class SerieCardComponent{
 
   getSerieName(){
   if(this.serie){
-    return this.serie.original_name;
+    return this.serie.name;
   }else if(this.seriesActor){
     return this.seriesActor.original_name;
   }else
