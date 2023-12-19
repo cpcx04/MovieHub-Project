@@ -37,13 +37,14 @@ export class SerieCardComponent{
 
   getSerieRated() {
     if (this.serie) {
-      return Number(this.serie.vote_average).toFixed(1);
+      return parseFloat(this.serie.vote_average.toFixed(1));
     } else if (this.seriesActor) {
-      return Number(this.seriesActor.vote_average).toFixed(1);
+      return parseFloat(this.seriesActor.vote_average.toFixed(1));
     } else {
-      return "";
+      return 0; // O cualquier otro valor por defecto que desees
     }
   }
+  
   onCardClick() {
     const serieId = this.serie?.id || this.seriesActor?.id;
     
